@@ -7,8 +7,8 @@ construção de um explorador de árvores
 - [ ] codigo organizado em modulos (.cp e .h ou .hpp)
 - [ ] menu ascII para o usuario com as opcoes de uso
 - [ ] todas as operações devem indicar o tempo de processamento utilizado após a finalização
-- [ x ] uma das opçoes deve ser a construção de uma árvore binária de busca a partir de um arquivo de texto
-- [ x ] uma das opçoes deve ser a construção de uma árvore binária de busca a partir de dados digitados pelo usuário
+- [x] uma das opçoes deve ser a construção de uma árvore binária de busca a partir de um arquivo de texto
+- [x] uma das opçoes deve ser a construção de uma árvore binária de busca a partir de dados digitados pelo usuário
 - [ ] uma das opçoes deve ser informar a altura da árvore
 - [ ] uma das opçoes deve ser a inserção de um elemento fornecido pelo usuário
 - [ ] uma das opçoes deve ser a remoção de um elemento fornecido pelo usuário
@@ -19,4 +19,4 @@ construção de um explorador de árvores
 - [ ] uma das opçoes deve converter a árvore em uma lista e ordenar com selection sort
 - [ ] uma das opçoes deve converter a árvore em uma lista e ordenar com insertion sort
 - [ ] uma das opçoes deve converter a árvore em uma lista e ordenar com shell sort
-- [ o ] representação gráfica da ordenação
+- [o] representação gráfica da ordenação
