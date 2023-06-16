@@ -99,7 +99,7 @@ void TreeWriter(Node* root, ofstream& outputFile, string prefix, bool isLeft)
 
 void printTree(Node* root)
 {
-    ofstream outputFile("tree_visualization.txt");
+    ofstream outputFile("output/tree_visualization.txt");
 
     if (!outputFile.is_open())
     {
@@ -119,7 +119,7 @@ int main()
 
     // root = createByUser();
 
-    root = createByTextFile("C:/Users/rafae/OneDrive/Documentos/prog/coding_C++/A2_ED/tree_1.txt");
+    root = createByTextFile("C:/Users/rafae/OneDrive/Documentos/prog/coding_C++/A2_ED/A2_ED/tree_1.txt");
 
     printTree(root);
 }

@@ -6,7 +6,7 @@ int main()
 
     // root = createByUser();
 
-    root = createByTextFile("C:/Users/rafae/OneDrive/Documentos/prog/coding_C++/A2_ED/tree_1.txt");
+    root = createByTextFile("C:/Users/rafae/OneDrive/Documentos/prog/coding_C++/A2_ED/A2_ED/tree_1.txt");
 
     printTree(root);
 }
