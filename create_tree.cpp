@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include <exception>
 
 using namespace std;
 
@@ -11,9 +10,9 @@ struct Node
     struct Node* ptrRight;
 };
 
-struct Node* newNode(int iData)
+Node* newNode(int iData)
 {
-     struct Node* newNode = new Node;
+    struct Node* newNode = new Node;
     newNode -> iPayload = iData;
     newNode -> ptrLeft = nullptr;
     newNode -> ptrRight = nullptr;
@@ -21,7 +20,7 @@ struct Node* newNode(int iData)
     return newNode;
 };
 
-struct Node* insertNode(struct Node* node, int iData)
+Node* insertNode(struct Node* node, int iData)
 {
     if(node == nullptr) return newNode(iData);
     
@@ -80,35 +79,47 @@ Node* createByTextFile(string strFileName)
     return root;
 }
 
-int rec[1000006];
-void printTree(struct Node* curr,int depth)
+void TreeWriter(Node* root, ofstream& outputFile, string prefix, bool isLeft)
 {
-    int i;
-    if(curr == nullptr)
+    if (root == nullptr)
         return;
-    
-    printf("\t");
-    for(i = 0; i < depth; i++)
-        if(i == depth - 1)
-            printf("%s---", rec[depth - 1] ? "| " : "");
-        else
-            printf("%s   ", rec[i] ? "| " : " ");
-    printf("%d\n", curr->iPayload);
-    rec[depth] = 1;
-    printTree(curr->ptrLeft, depth + 1);
-    rec[depth] = 0;
-    printTree(curr->ptrRight, depth + 1);
+
+    outputFile << prefix;
+
+    if (isLeft)
+        outputFile << "├── ";
+    else
+        outputFile << "└── ";
+
+    outputFile << root->iPayload << endl;
+
+    TreeWriter(root->ptrLeft, outputFile, prefix + (isLeft ? "│   " : "    "), true);
+    TreeWriter(root->ptrRight, outputFile, prefix + (isLeft ? "│   " : "    "), false);
 }
 
+void printTree(Node* root)
+{
+    ofstream outputFile("tree_visualization.txt");
 
+    if (!outputFile.is_open())
+    {
+        cout << "Erro ao abrir o arquivo" << endl;
+        return;
+    }
+
+    TreeWriter(root, outputFile, "", true);
+
+    outputFile.close();
+    cout << "Visualização salva em: 'tree_visualization.txt'" << endl;
+}
 
 int main()
 {
     struct Node* root = nullptr;
 
-    //root = createByUser();
+    // root = createByUser();
 
     root = createByTextFile("C:/Users/rafae/OneDrive/Documentos/prog/coding_C++/A2_ED/tree_1.txt");
 
-    printTree(root, 1);
+    printTree(root);
 }
