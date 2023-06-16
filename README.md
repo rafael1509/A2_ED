@@ -19,4 +19,4 @@ construção de um explorador de árvores
 - [ ] uma das opçoes deve converter a árvore em uma lista e ordenar com selection sort
 - [ ] uma das opçoes deve converter a árvore em uma lista e ordenar com insertion sort
 - [ ] uma das opçoes deve converter a árvore em uma lista e ordenar com shell sort
-- [o] representação gráfica da ordenação
+- [x] representação gráfica da ordenação
