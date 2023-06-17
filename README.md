@@ -10,7 +10,7 @@ construção de um explorador de árvores
 - [x] uma das opçoes deve ser a construção de uma árvore binária de busca a partir de um arquivo de texto
 - [x] uma das opçoes deve ser a construção de uma árvore binária de busca a partir de dados digitados pelo usuário
 - [x] uma das opçoes deve ser informar a altura da árvore
-- [ ] uma das opçoes deve ser a inserção de um elemento fornecido pelo usuário
+- [x] uma das opçoes deve ser a inserção de um elemento fornecido pelo usuário
 - [ ] uma das opçoes deve ser a remoção de um elemento fornecido pelo usuário
 - [ ] uma das opçoes deve ser a busca do endereço de memória de um elemento fornecido pelo usuário
 - [ ] uma das opçoes deve informar se a árvore é completa
