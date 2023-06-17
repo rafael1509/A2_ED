@@ -61,18 +61,11 @@ Node* createByTextFile(string strFileName)
         return root;
     }
 
-    string linha =  "";
-    while (getline(arquivo, linha))
+    //Pegar arquivos por espaços (A versão antiga separava por linhas)
+    int number;
+    while (arquivo >> number)
     {
-        try
-        {
-            root = insertNode(root, stoi(linha));
-        }
-        catch(const exception& e)
-        {
-            cerr << "Termo inválido para ser adicionado na árvore" << e.what() << endl;
-            break;
-        }
+        root = insertNode(root, number);
     }
 
     arquivo.close();
@@ -119,7 +112,7 @@ int main()
 
     // root = createByUser();
 
-    root = createByTextFile("C:/Users/rafae/OneDrive/Documentos/prog/coding_C++/A2_ED/A2_ED/tree_1.txt");
+    root = createByTextFile("./tree_1.txt");
 
     printTree(root);
 }
