@@ -166,7 +166,7 @@ int main()
     resultado = (nullptr == searchNode(nullptr, 42))? "OK":"Deu ruim";
     cout << "Busca nullptr: " << resultado << endl;
 
-    resultado = (root == searchNode(root, 42))? "OK":"Deu ruim";
+    resultado = (root == searchNode(root, 57))? "OK":"Deu ruim";
     cout << "Busca 42: " << resultado << endl;
 
     resultado = (root -> ptrLeft == searchNode(root, 7))? "OK":"Deu ruim";

@@ -106,3 +106,77 @@ void printTree(Node* root)
     outputFile.close();
     cout << "Visualização salva em: 'output/tree_visualization.txt'" << endl;
 }
+
+int altura(struct Node* node)
+{
+  int iAltura = 0;
+  if(node != nullptr)
+  {
+    int iAlturaL = altura(node -> ptrLeft);
+    int iAlturaR = altura(node -> ptrRight);
+    int iMaxAltura = max(iAlturaL, iAlturaR);
+    iAltura = iMaxAltura + 1;
+  }
+  return iAltura;
+}
+
+Node* deleteNode(struct Node* node, int iData)
+{
+    if(node == nullptr) return node;
+    
+    if(iData < node -> iPayload) node -> ptrLeft = deleteNode(node -> ptrLeft, iData);
+    
+    else if(iData > node -> iPayload) node -> ptrRight = deleteNode(node -> ptrRight, iData);
+    
+    else
+    {
+        struct Node* ptrTemp = nullptr;
+        
+        if(node->ptrLeft == nullptr)
+        {
+            ptrTemp = node->ptrRight;
+            free(node);
+            
+            return ptrTemp;
+        }
+        
+        else if(node->ptrRight == nullptr)
+        {
+            ptrTemp = node->ptrLeft;
+            free(node);
+            
+            return ptrTemp;
+        }
+        
+        else
+        {
+            ptrTemp = lesserLeaf(node -> ptrRight);
+            
+            struct Node* leftTemp = node -> ptrLeft;
+            node -> ptrLeft = nullptr;
+            
+            struct Node* rightTemp = node -> ptrRight;
+            node -> ptrRight = nullptr;
+            
+            insertNode(node, ptrTemp -> iPayload);
+            
+            struct Node* newTree = deleteNode(node, iData);
+            
+            newTree -> ptrRight = deleteNode(rightTemp, ptrTemp -> iPayload);
+            newTree -> ptrLeft = leftTemp;
+            
+            return newTree;
+        }
+    }
+    
+    return node;
+}
+
+Node* searchNode(struct Node* node, int iData)
+{
+    if(node == nullptr) return nullptr;
+    else if(iData == node -> iPayload) return node;
+    else if(iData < node -> iPayload) return searchNode(node -> ptrLeft, iData);
+    else return searchNode(node -> ptrRight, iData);
+
+}

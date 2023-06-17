@@ -13,11 +13,16 @@ struct Node
     struct Node* ptrRight;
 };
 
+#include "helper.h"
+
 Node* newNode(int iData);
 Node* insertNode(struct Node* node, int iData);
 Node* createByUser();
 Node* createByTextFile(string strFileName);
 void TreeWriter(Node* root, ofstream& outputFile, string prefix, bool isLeft);
 void printTree(Node* root);
+int altura(struct Node* node);
+Node* deleteNode(struct Node* node, int iData);
+Node* searchNode(struct Node* node, int iData);
 
-#endif  // TREE_H
+#endif 
