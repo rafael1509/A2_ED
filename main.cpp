@@ -58,7 +58,7 @@ int main()
             int iValor = 0;
             cout << "Informe um valor para buscar seu endereço de memória na árvore: ";
             cin >> iValor;
-            cout << "Posição de "<< iValor << ": " << (root, iValor);
+            cout << "Posição de " << iValor << ": " << searchNode(root, iValor);
         }
         
         else if (iInput == 6)

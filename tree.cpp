@@ -73,24 +73,6 @@ Node* createByTextFile(string strFileName)
     return root;
 }
 
-void TreeWriter(Node* root, ofstream& outputFile, string prefix, bool isLeft)
-{
-    if (root == nullptr)
-        return;
-
-    outputFile << prefix;
-
-    if (isLeft)
-        outputFile << "├── ";
-    else
-        outputFile << "└── ";
-
-    outputFile << root->iPayload << endl;
-
-    TreeWriter(root->ptrLeft, outputFile, prefix + (isLeft ? "│   " : "    "), true);
-    TreeWriter(root->ptrRight, outputFile, prefix + (isLeft ? "│   " : "    "), false);
-}
-
 void printTree(Node* root)
 {
     ofstream outputFile("output/tree_visualization.txt");
