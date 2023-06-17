@@ -12,7 +12,7 @@ construção de um explorador de árvores
 - [x] uma das opçoes deve ser informar a altura da árvore
 - [x] uma das opçoes deve ser a inserção de um elemento fornecido pelo usuário
 - [x] uma das opçoes deve ser a remoção de um elemento fornecido pelo usuário
-- [ ] uma das opçoes deve ser a busca do endereço de memória de um elemento fornecido pelo usuário
+- [x] uma das opçoes deve ser a busca do endereço de memória de um elemento fornecido pelo usuário
 - [ ] uma das opçoes deve informar se a árvore é completa
 - [ ] uma das opçoes deve informar se a árvore é perfeita
 - [ ] uma das opçoes deve converter a árvore em uma lista e ordenar com bubble sort
