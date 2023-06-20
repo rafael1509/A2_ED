@@ -1,4 +1,5 @@
-#include "tree.h"
+#include "../include/tree.h"
+#include "helper.cpp"
 #include <iostream>
 #include <fstream>
 
@@ -89,17 +90,17 @@ void printTree(Node* root)
     cout << "Visualização salva em: 'output/tree_visualization.txt'" << endl;
 }
 
-int altura(struct Node* node)
+int height(struct Node* node)
 {
-  int iAltura = 0;
+  int iHeight = 0;
   if(node != nullptr)
   {
-    int iAlturaL = altura(node -> ptrLeft);
-    int iAlturaR = altura(node -> ptrRight);
-    int iMaxAltura = max(iAlturaL, iAlturaR);
-    iAltura = iMaxAltura + 1;
+    int iHeightL = altura(node -> ptrLeft);
+    int iHeightR = altura(node -> ptrRight);
+    int iMaxHeight = max(iHeightL, iHeightR);
+    iHeight = iMaxHeight + 1;
   }
-  return iAltura;
+  return iHeight;
 }
 
 Node* deleteNode(struct Node* node, int iData)

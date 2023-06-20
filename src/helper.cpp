@@ -1,4 +1,4 @@
-#include "helper.h"
+#include "../include/helper.h"
 
 // auxilia na função print
 void TreeWriter(Node* root, ofstream& outputFile, string prefix, bool isLeft)
