@@ -168,14 +168,14 @@ bool isCompleteUtil(Node* root, int level, int height)
     if (root == nullptr)
         return true;
 
-    if (level == height - 1) {
-        if (root->ptrLeft == nullptr && root->ptrRight != nullptr)
-            return false;
-        else if (root->ptrLeft != nullptr && root->ptrRight == nullptr)
-            return true;
-        else if (root->ptrLeft == nullptr && root->ptrRight == nullptr)
-            return true;
-    }
+    if (level == height - 1) 
+    {
+    if ((root->ptrLeft == nullptr && root->ptrRight != nullptr) ||
+        (root->ptrLeft != nullptr && root->ptrRight == nullptr))
+        return false;
+    else
+        return true;
+}
 
     if (level < height - 1) {
         bool leftSubtree = isCompleteUtil(root->ptrLeft, level + 1, height);
