@@ -24,5 +24,7 @@ void printTree(Node* root);
 int altura(struct Node* node);
 Node* deleteNode(struct Node* node, int iData);
 Node* searchNode(struct Node* node, int iData);
+bool isCompleteUtil(Node* root, int level, int height);
+bool isCompleteTree(Node* root);
 
 #endif 

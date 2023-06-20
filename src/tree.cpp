@@ -95,8 +95,8 @@ int height(struct Node* node)
   int iHeight = 0;
   if(node != nullptr)
   {
-    int iHeightL = altura(node -> ptrLeft);
-    int iHeightR = altura(node -> ptrRight);
+    int iHeightL = height(node -> ptrLeft);
+    int iHeightR = height(node -> ptrRight);
     int iMaxHeight = max(iHeightL, iHeightR);
     iHeight = iMaxHeight + 1;
   }
@@ -161,5 +161,34 @@ Node* searchNode(struct Node* node, int iData)
     else if(iData == node -> iPayload) return node;
     else if(iData < node -> iPayload) return searchNode(node -> ptrLeft, iData);
     else return searchNode(node -> ptrRight, iData);
+}
 
+bool isCompleteUtil(Node* root, int level, int height) 
+{
+    if (root == nullptr)
+        return true;
+
+    if (level == height - 1) {
+        if (root->ptrLeft == nullptr && root->ptrRight != nullptr)
+            return false;
+        else if (root->ptrLeft != nullptr && root->ptrRight == nullptr)
+            return true;
+        else if (root->ptrLeft == nullptr && root->ptrRight == nullptr)
+            return true;
+    }
+
+    if (level < height - 1) {
+        bool leftSubtree = isCompleteUtil(root->ptrLeft, level + 1, height);
+        bool rightSubtree = isCompleteUtil(root->ptrRight, level + 1, height);
+
+        return leftSubtree && rightSubtree;
+    }
+    
+    return false;
+}
+
+bool isCompleteTree(Node* root) 
+{
+    int treeHeight = height(root);
+    return isCompleteUtil(root, 0, treeHeight);
 }
