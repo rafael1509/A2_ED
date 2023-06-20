@@ -19,6 +19,7 @@ int main()
         cout << "[4] remoção de um elemento fornecido pelo usuário" <<endl;
         cout << "[5] busca do endereço de memória de um elemento fornecido pelo usuário" <<endl;
         cout << "[6] representação gráfica da ordenação" << endl;
+        cout << "[7] Informar se árvore é completa" << endl;
         cout << "[-1] sair" << endl;
         cin >> iInput;
 
@@ -35,7 +36,7 @@ int main()
 
         else if (iInput == 2)
         {
-            cout << "Altura da árvore: " << altura(root);
+            cout << "Altura da árvore: " << height(root);
         }
 
         else if (iInput == 3)
@@ -65,6 +66,20 @@ int main()
         else if (iInput == 6)
         {
             printTree(root);
+        }
+
+        else if (iInput == 7)
+        {
+            int iValor = 0;
+            bool complete = isCompleteTree(root);
+            if (complete == true)
+            {
+                cout << "A árvore é completa.";
+            }
+            else if (complete == false)
+            {
+                cout << "A árvore não é completa.";
+            }
         }
     }
     cout << "programa finalizado com sucesso";
