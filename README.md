@@ -1,6 +1,10 @@
 # A2_ED
 construção de um explorador de árvores
 
+# Como rodar
+g++ main.cpp src/tree.cpp src/helper.cpp -I include -o main.exe
+.\main.exe
+
 # check list
 - [ ] notação hungara
 - [ ] comentarios em funções e driver code
