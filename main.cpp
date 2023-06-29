@@ -1,4 +1,4 @@
-#include "tree.h"
+#include "include/tree.h"
 #include <iostream>
 
 using namespace std;
@@ -26,7 +26,7 @@ int main()
             string strFileName = "";
             cout << "Informe o file path: ";
             cin >> strFileName;
-            root = createByTextFile(strFileName);  // "C:/Users/rafae/OneDrive/Documentos/prog/coding_C++/A2_ED/A2_ED/tree_1.txt" 
+            root = createByTextFile(strFileName);  // "C:/Users/rafae/OneDrive/Documentos/prog/coding_C++/A2_ED/tree_1.txt" 
         }    
 
         else if (iInput == 1)

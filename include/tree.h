@@ -13,7 +13,7 @@ struct Node
     struct Node* ptrRight;
 };
 
-#include "helper.h"
+#include "../include/helper.h"
 
 Node* newNode(int iData);
 Node* insertNode(struct Node* node, int iData);
