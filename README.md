@@ -8,7 +8,8 @@ construção de um explorador de árvores
 
 # check list
 - [ ] notação hungara
-- [ ] comentarios em funções e driver code
+- [ ] comentarios em funções
+- [x] driver code
 - [x] codigo organizado em modulos (.cp e .h ou .hpp)
 - [ ] menu ascII para o usuario com as opcoes de uso
 - [ ] todas as operações devem indicar o tempo de processamento utilizado após a finalização
