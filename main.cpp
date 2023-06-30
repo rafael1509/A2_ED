@@ -1,5 +1,6 @@
 #include "include/tree.h"
 #include <iostream>
+#include <ctime>
 
 using namespace std;
 
@@ -20,6 +21,9 @@ int main()
         cout << "[6] representação gráfica da ordenação" << endl;
         cout << "[-1] sair" << endl;
         cin >> iInput;
+        cout << "";
+
+        clock_t start = clock();
 
         if (iInput == 0)
         {
@@ -34,7 +38,7 @@ int main()
 
         else if (iInput == 2)
         {
-            cout << "Altura da árvore: " << altura(root);
+            cout << "Altura da árvore: " << altura(root) << endl;
         }
 
         else if (iInput == 3)
@@ -65,6 +69,10 @@ int main()
         {
             printTree(root);
         }
+
+        clock_t end = clock();
+        double elapsed_secs = double(end - start) / CLOCKS_PER_SEC;
+        cout << "Tempo de processamento: " << elapsed_secs << " segundos" << endl;
     }
     cout << "programa finalizado com sucesso";
 }

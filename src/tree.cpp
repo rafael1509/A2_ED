@@ -162,3 +162,29 @@ Node* searchNode(struct Node* node, int iData)
     else return searchNode(node -> ptrRight, iData);
 
 }
+
+// ordena linked lists
+void BubbleSort(NodeLinkedList** head)
+{
+    int len = lenght((*head)) + 1; // +1 pois estamos acrescentando um nó no inicio
+    NodeLinkedList* novoHead = (NodeLinkedList*)malloc(sizeof(NodeLinkedList));
+    novoHead -> ptrNext = (*head);
+    for (int i = len-2; i > 0; i--) // o for para no antepenultimo nó
+    {
+        NodeLinkedList* current = novoHead;
+        for (int j = 0; j<i; j++)
+        {
+            if (current -> ptrNext-> iPayload > current -> ptrNext -> ptrNext -> iPayload) // temos o no 1 3 2 4, e queremos deixar 1 3 2 4. current é o 1
+            {
+                NodeLinkedList* aux = current -> ptrNext; //aux guarda o 3
+                current -> ptrNext = aux -> ptrNext; // 1 -> 2
+                NodeLinkedList* aux2 = current -> ptrNext -> ptrNext; // guarda o 4
+                current -> ptrNext -> ptrNext = aux; // 2 -> 3
+                aux -> ptrNext = aux2;
+            }
+        current = current -> ptrNext;
+        }
+    }
+    *head = novoHead-> ptrNext;
+    free(novoHead);
+}

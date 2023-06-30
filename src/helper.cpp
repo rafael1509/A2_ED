@@ -1,4 +1,4 @@
-#include "helper.h"
+#include "../include/helper.h"
 
 // auxilia na função print
 void TreeWriter(Node* root, ofstream& outputFile, string prefix, bool isLeft)
@@ -27,4 +27,17 @@ struct Node* lesserLeaf(struct Node* node)
     while(ptrCurrent && ptrCurrent -> ptrLeft != nullptr) ptrCurrent = ptrCurrent -> ptrLeft;
     
     return ptrCurrent;
+}
+
+// retorna o tamanho de uma linked list. Usado para fazer o bubble sort da Link List
+int lenght(NodeLinkedList* head)
+{
+    int cont = 1;
+    NodeLinkedList* temp = head;
+    while (temp -> ptrNext != nullptr)
+    {
+        temp = temp-> ptrNext;
+        cont ++;
+    }
+    return cont;
 }
