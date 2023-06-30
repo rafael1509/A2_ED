@@ -35,7 +35,9 @@ bool isPerfect(Node* head);
 bool isComplete(Node* head);
 void BubbleSort(Node* root);
 void insertionSort(NodeLinkedList** head);
+void selectionSort(Node* root);
 void shellSort(Node* root);
 void BubbleSortRepresentation(Node* root);
+void insertionSortRepresentation(Node* root);
 
 #endif 

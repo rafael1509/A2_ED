@@ -322,6 +322,37 @@ void insertionSort(NodeLinkedList** head)
     }
 
     *head = sorted; //atualiza a head lista original como a head da sorted list
+    cout << "A árvore foi convertida em lista encadeada e organizada com Selection sort: \n";
+    PrintLinkedList((*head));
+}
+
+/**
+ * Ordena uma lista encadeada usando o algoritmo Selection Sort.
+ *
+ * @param root Ponteiro para a root da árvore.
+ */
+void selectionSort(Node* root)
+{
+    NodeLinkedList* aux = ConvertTreeToList(root);
+    NodeLinkedList** head = &aux;
+
+    struct NodeLinkedList* temp = *head;
+  
+    while (temp != nullptr) //Passo por todos os nós da lista
+    {
+        struct NodeLinkedList* min = temp;
+        struct NodeLinkedList* r = temp -> ptrNext;
+        
+        while (r != nullptr) //Verifico qual o mínimo a partir do nó que estou olhando
+        {
+            if (min -> iPayload > r -> iPayload) min = r;
+            r = r -> ptrNext;
+        }
+        swapNodes(head, temp->iPayload, min->iPayload); //Chamo a troca de nós entre o nó que estou e o mínimo encontrado
+        temp = min->ptrNext; //Redireciono o nó que vou olhar
+    }
+    cout << "A árvore foi convertida em lista encadeada e organizada com Selection sort: \n";
+    PrintLinkedList((*head));
 }
 
 /**
@@ -403,11 +434,50 @@ void BubbleSortRepresentation(Node* root)
                 aux -> ptrNext = aux2;
                 system("cls");  // Limpa a tela do console (funciona no Windows)
                 displaySort(novoHead->ptrNext);
-                this_thread::sleep_for(std::chrono::milliseconds(500));  // Atraso em milissegundos
+                this_thread::sleep_for(std::chrono::milliseconds(100));  // Atraso em milissegundos
             }
         current = current -> ptrNext;
         }
     }
     *head = novoHead-> ptrNext;
     free(novoHead);
+}
+
+void insertionSortRepresentation(Node* root) 
+{
+    NodeLinkedList* aux = ConvertTreeToList(root);
+    NodeLinkedList* head = aux;
+
+    NodeLinkedList* sorted = nullptr;
+    NodeLinkedList* current = head;
+
+    while (current != nullptr) {
+        NodeLinkedList* nextNode = current->ptrNext;
+
+        if (sorted == nullptr || current->iPayload < sorted->iPayload) 
+        {
+            current->ptrNext = sorted;
+            sorted = current;
+        } 
+        else 
+        {
+            NodeLinkedList* temp = sorted;
+            while (temp->ptrNext != nullptr && temp->ptrNext->iPayload < current->iPayload) 
+            {
+                temp = temp->ptrNext;
+            }
+            current->ptrNext = temp->ptrNext;
+            temp->ptrNext = current;
+        }
+
+        current = nextNode;
+
+        std::system("clear");  // Limpa a tela do console (funciona no Windows)
+        displaySort(current);
+        cout << endl;
+        displaySort(sorted);
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));  // Atraso em milissegundos
+    }
+
+    head = sorted;
 }

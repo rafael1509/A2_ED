@@ -23,8 +23,10 @@ int main()
         cout << "[8] verifica se a árvore é completa" << endl;
         cout << "[9] converte a árvore em uma lista e ordena com bubble sort" << endl;
         cout << "[10] converte a árvore em uma lista e ordena com insertion sort" << endl;
-        cout << "[11] converte a árvore em uma lista e ordena com shell sort" << endl;
-        cout << "[12] Representação gráfica da ordenação com Bubble sort" << endl;
+        cout << "[11] converte a árvore em uma lista e ordena com selection sort" << endl;
+        cout << "[12] converte a árvore em uma lista e ordena com shell sort" << endl;
+        cout << "[13] Representação gráfica da ordenação com Bubble sort" << endl;
+        cout << "[14] Representação gráfica da ordenação com Insertion sort" << endl;
 
         cout << "[-1] sair" << endl;
         cin >> iInput;
@@ -103,18 +105,26 @@ int main()
             NodeLinkedList* aux = ConvertTreeToList(root);
             NodeLinkedList** head = &aux;
             insertionSort(head);
-            cout << "A árvore foi convertida em lista encadeada e organizada com insertion sort: \n";
-            PrintLinkedList((*head));
         }
 
         else if(iInput == 11)
         {
-            shellSort(root);
+            selectionSort(root);
         }
 
         else if(iInput == 12)
         {
+            shellSort(root);
+        }
+
+        else if(iInput == 13)
+        {
             BubbleSortRepresentation(root);
+        }
+
+        else if(iInput == 14)
+        {
+            insertionSortRepresentation(root);
         }
 
         clock_t end = clock();

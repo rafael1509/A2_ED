@@ -140,3 +140,44 @@ void displaySort(NodeLinkedList* head)
         current = current->ptrNext;
     }
 }
+
+/**
+ * Troca os nós que contêm os valores 'x' e 'y' em uma lista encadeada.
+ * (Função para auxiliar o Selection Sort)
+ *
+ * @param head Ponteiro para o ponteiro do início da lista encadeada.
+ * @param x Valor do primeiro nó a ser trocado.
+ * @param y Valor do segundo nó a ser trocado.
+ */
+void swapNodes(struct NodeLinkedList** head, int x, int y)
+{
+    if (x == y) return; //Se os números forem iguais, não fará diferença trocá-los.
+    
+    struct NodeLinkedList* prevX = nullptr;
+    struct NodeLinkedList* currX = *head; //Começo a partir do início da lista para procurar o nó com o 'x' em data.
+    while (currX && currX -> iPayload != x)
+    {
+        prevX = currX;
+        currX = currX->ptrNext;
+    }
+ 
+    struct NodeLinkedList* prevY = currX; 
+    struct NodeLinkedList* currY = currX->ptrNext; //Começo a partir do currX->next para procurar o nó com o 'y' em data, pois já garanti que todos antes do currX são menores que ele.
+    while (currY && currY->iPayload != y) 
+    {
+        prevY = currY;
+        currY = currY->ptrNext;
+    }
+
+    if (prevX != NULL) prevX->ptrNext = currY; //Se o nó com 'x' não for o head
+    
+    else *head = currY; //Se o nó com 'x' for o head
+ 
+    if (prevY != NULL) prevY->ptrNext = currX; //Se o nó com 'y' não for o head
+    
+    else *head = currX; //Se o nó com 'y' for o head
+ 
+    struct NodeLinkedList* temp = currY->ptrNext;
+    currY->ptrNext = currX->ptrNext;
+    currX->ptrNext = temp;
+}
