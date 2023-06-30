@@ -280,7 +280,8 @@ void shellSort(Node* root)
     for (int gap = n / 2; gap > 0; gap /= 2) 
     {
         // Percorre a lista a partir do gap até o final
-        for (int i = gap; i < n; i++) {
+        for (int i = gap; i < n; i++) 
+        {
             int temp = 0;
 
             // Encontra o elemento na posição i
