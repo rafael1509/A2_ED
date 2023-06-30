@@ -189,31 +189,42 @@ void BubbleSort(NodeLinkedList** head)
     free(novoHead);
 }
 
-void insertionSort(NodeLinkedList** head) 
+/**
+ * Ordena uma lista encadeada usando o algoritmo Insertion Sort.
+ *
+ * @param head O ponteiro para o ponteiro da head da lista encadeada.
+ */
+void insertionSort(NodeLinkedList** head)
 {
     NodeLinkedList* sorted = nullptr;
     NodeLinkedList* current = *head;
 
     while (current != nullptr) 
     {
-        NodeLinkedList* next = current->ptrNext;
+        NodeLinkedList* next = current->ptrNext; // Armazena o próximo nó da lista original
 
+        //Usaremos uma nova linked list sorted
+        //Caso o valor atual seja menor que o valor inicial da lista sorted
+        //Ou caso a lista esteja vazia sorted
         if (sorted == nullptr || current->iPayload < sorted->iPayload) 
         {
+            // O nó atual é o primeiro nó da lista ordenada
             current->ptrNext = sorted;
             sorted = current;
         } 
         else 
         {
             NodeLinkedList* ptr = sorted;
+            //Verifica se há algum valor maior que o current na lista sorted para fazer a ordenação
             while (ptr->ptrNext != nullptr && ptr->ptrNext->iPayload < current->iPayload)
                 ptr = ptr->ptrNext;
+            // Insere o nó atual na posição correta da lista sorted
             current->ptrNext = ptr->ptrNext;
             ptr->ptrNext = current;
         }
 
-        current = next;
+        current = next; // Atualiza o ponteiro da cabeça para apontar para a lista ordenada
     }
 
-    *head = sorted;
+    *head = sorted; //atualiza a head lista original como a head da sorted list
 }
