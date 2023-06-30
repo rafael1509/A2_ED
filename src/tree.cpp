@@ -324,7 +324,11 @@ void insertionSort(NodeLinkedList** head)
     *head = sorted; //atualiza a head lista original como a head da sorted list
 }
 
-// Função de ordenação por Shell Sort
+/**
+ * Ordena uma lista encadeada usando o algoritmo Shell Sort.
+ *
+ * @param root Ponteiro para a root da árvore.
+ */
 void shellSort(Node* root) 
 {
     NodeLinkedList* aux = ConvertTreeToList(root);
