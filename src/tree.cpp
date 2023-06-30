@@ -4,7 +4,12 @@
 #include <cmath>
 
 using namespace std;
-
+/**
+ * Cria um novo nó a partir de um int determinado.
+ *
+ * @param iData Inteiro que o novo nó vai armazenar.
+ * @return Ponteiro para o novo nó criado.
+ */
 Node* newNode(int iData)
 {
     struct Node* newNode = new Node;
@@ -15,6 +20,13 @@ Node* newNode(int iData)
     return newNode;
 };
 
+/**
+ * Insere um nó com o valor de um inteiro em uma árvore.
+ *
+ * @param node Ponteiro para a root da árvore.
+ * @param iData Inteiro que o novo nó vai armazenar.
+ * @return Ponteiro para o nó inicial.
+ */
 Node* insertNode(struct Node* node, int iData)
 {
     if(node == nullptr) return newNode(iData);
@@ -26,6 +38,12 @@ Node* insertNode(struct Node* node, int iData)
     return node;
 }
 
+/**
+ * Cria uma árvore a partir de números digitados pelo usuário.
+ *
+ * @param None
+ * @return Ponteiro para o root da árvore gerada.
+ */
 Node* createByUser()
 {
     struct Node* root = nullptr;
@@ -44,6 +62,12 @@ Node* createByUser()
     return root;
 }
 
+/**
+ * Cria uma árvore a partir de um arquivo de texto.
+ *
+ * @param strFileName Arquivo de texto usado para criar a árvore.
+ * @return Ponteiro para o root da árvore gerada.
+ */
 Node* createByTextFile(string strFileName)
 {
     ifstream arquivo(strFileName);
@@ -74,6 +98,11 @@ Node* createByTextFile(string strFileName)
     return root;
 }
 
+/**
+ * Faz a vizualização de uma árvore.
+ *
+ * @param root Ponteiro para a root da árvore a ser vizualizada.
+ */
 void printTree(Node* root)
 {
     ofstream outputFile("output/tree_visualization.txt");
@@ -90,6 +119,12 @@ void printTree(Node* root)
     cout << "Visualização salva em: 'output/tree_visualization.txt'" << endl;
 }
 
+/**
+ * Informa qual a altura de uma determinada árvore.
+ *
+ * @param node Ponteiro para a root da árvore a ser utilizada.
+ * @return Inteiro que informa a altura da árvore.
+ */
 int altura(struct Node* node)
 {
   int iAltura = 0;
@@ -103,6 +138,13 @@ int altura(struct Node* node)
   return iAltura;
 }
 
+/**
+ * Deleta um determinado nó de uma determinada árvore.
+ *
+ * @param node Ponteiro para a root da árvore a ser utilizada.
+ * @param iData Inteiro correspondente ao nó a ser deletado.
+ * @return Ponteiro para o root dessa árvore com o nó deletado.
+ */
 Node* deleteNode(struct Node* node, int iData)
 {
     if(node == nullptr) return node;
@@ -155,6 +197,13 @@ Node* deleteNode(struct Node* node, int iData)
     return node;
 }
 
+/**
+ * Encontra um nó em uma determinada árvore.
+ *
+ * @param node Ponteiro para a root da árvore a ser utilizada.
+ * @param iData Inteiro correspondente ao nó a ser procurado.
+ * @return Ponteiro para o nó na árvore.
+ */
 Node* searchNode(struct Node* node, int iData)
 {
     if(node == nullptr) return nullptr;
@@ -164,6 +213,12 @@ Node* searchNode(struct Node* node, int iData)
 
 }
 
+/**
+ * Avalia se uma determinada árvore é perfeita.
+ *
+ * @param head Ponteiro para a root da árvore a ser avaliada.
+ * @return Booleano informando se a árvore é perfeita.
+ */
 bool isPerfect(Node* head)
 {
     NodeLinkedList* headLL = ConvertTreeToList(head);
@@ -174,6 +229,12 @@ bool isPerfect(Node* head)
     return false;
 }
 
+/**
+ * Avalia se uma determinada árvore é completa.
+ *
+ * @param head Ponteiro para a root da árvore a ser avaliada.
+ * @return Booleano informando se a árvore é completa.
+ */
 bool isComplete(Node* head)
 {
     NodeLinkedList* headLL = ConvertTreeToList(head);
@@ -184,7 +245,11 @@ bool isComplete(Node* head)
     return false;    
 }
 
-// converte a árvore em uma lista e ordena com bubble sort
+/**
+ * Ordena uma árvore convertida para lista encadeada usando o algoritmo Bubble Sort.
+ *
+ * @param root Ponteiro para a root da árvore.
+ */
 void BubbleSort(Node* root)
 {
     NodeLinkedList* aux = ConvertTreeToList(root);
@@ -217,7 +282,7 @@ void BubbleSort(Node* root)
 }
 
 /**
- * Ordena uma lista encadeada usando o algoritmo Insertion Sort.
+ * Ordena uma árvore convertida para lista encadeada usando o algoritmo Insertion Sort.
  *
  * @param root Ponteiro para a root da árvore.
  */

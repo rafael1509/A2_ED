@@ -1,7 +1,14 @@
 #include "../include/helper.h"
 #include <iostream>
 
-// auxilia na função print
+/**
+ * Escreve uma representação visual da árvore no arquivo de saída.
+ *
+ * @param root Ponteiro para o nó raiz da árvore.
+ * @param outputFile Arquivo de saída onde a representação da árvore será escrita.
+ * @param prefix Prefixo usado para a formatação visual da árvore.
+ * @param isLeft Indica se o nó atual é filho esquerdo de seu pai.
+ */
 void TreeWriter(Node* root, ofstream& outputFile, string prefix, bool isLeft)
 {
     if (root == nullptr)
@@ -20,7 +27,12 @@ void TreeWriter(Node* root, ofstream& outputFile, string prefix, bool isLeft)
     TreeWriter(root->ptrRight, outputFile, prefix + (isLeft ? "│   " : "    "), false);
 }
 
-//retorna o ponteiro para o nó folha de menor valor em uma árvore binária de busca
+/**
+ * Encontra a menor folha de uma determinada árvore.
+ *
+ * @param node Ponteiro para a root da árvore a ser feita a busca.
+ * @return Ponteiro para a menor folha encontrada.
+ */
 struct Node* lesserLeaf(struct Node* node)
 {
     struct Node* ptrCurrent = node;
@@ -30,6 +42,12 @@ struct Node* lesserLeaf(struct Node* node)
     return ptrCurrent;
 }
 
+/**
+ * Converte uma árvore em uma lista encadeada.
+ *
+ * @param root Ponteiro para a root da árvore a ser convertida.
+ * @return Ponteiro para a lista encadeada resultante da conversão.
+ */
 NodeLinkedList* ConvertTreeToList(Node* root) 
 {
     if (root == nullptr) {
@@ -58,7 +76,12 @@ NodeLinkedList* ConvertTreeToList(Node* root)
     return head;
 }
 
-// retorna o tamanho de uma linked list. Usado para fazer o bubble sort da Link List
+/**
+ * Informa o tamanho de uma determinada lista encadeada.
+ *
+ * @param head Ponteiro para a head da lista encadeada.
+ * @return count O tamanho dessa lista encadeada.
+ */
 int lenght(NodeLinkedList* head)
 {
     int cont = 1;
@@ -71,6 +94,11 @@ int lenght(NodeLinkedList* head)
     return cont;
 }
 
+/**
+ * Printa todos os elementos de uma determinada lista encadeada.
+ *
+ * @param head Ponteiro para a head da lista encadeada.
+ */
 void PrintLinkedList(NodeLinkedList* head) 
 {
     NodeLinkedList* current = head;
