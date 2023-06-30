@@ -19,6 +19,10 @@ int main()
         cout << "[4] remoção de um elemento fornecido pelo usuário" <<endl;
         cout << "[5] busca do endereço de memória de um elemento fornecido pelo usuário" <<endl;
         cout << "[6] representação gráfica da ordenação" << endl;
+        cout << "[7] verifica se a árvore é perfeita" << endl;
+        cout << "[8] verifica se a árvore é completa" << endl;
+        cout << "[9] converte a árvore em uma lista e ordena com bubble sort" << endl;
+
         cout << "[-1] sair" << endl;
         cin >> iInput;
         cout << "";
@@ -72,8 +76,23 @@ int main()
 
         else if (iInput == 7)
         {
-            cout << isPerfect(root) << endl;
-            cout << isComplete(root) << endl;
+            if (isPerfect(root))
+                cout << "A árvore é perfeita" << endl;
+            else
+                cout << "A árvore não é perfeita" << endl;
+        }
+
+        else if (iInput == 8)
+        {
+            if (isComplete(root))
+                cout << "A árvore é completa" << endl;
+            else
+                cout << "A árvore não é completa" << endl;
+        }
+
+        else if(iInput == 9)
+        {
+            BubbleSort(root);
         }
 
         clock_t end = clock();

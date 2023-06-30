@@ -164,42 +164,11 @@ Node* searchNode(struct Node* node, int iData)
 
 }
 
-NodeLinkedList* ConvertTreeToList(Node* root) 
-{
-    if (root == nullptr) {
-        return nullptr;
-    }
-
-    NodeLinkedList* head = new NodeLinkedList();
-    head-> iPayload = root-> iPayload;
-    head-> ptrNext = nullptr;
-
-    NodeLinkedList* ptrTail = head;
-
-    NodeLinkedList* leftList = ConvertTreeToList(root -> ptrLeft);
-    if (leftList != nullptr) {
-        ptrTail -> ptrNext = leftList;
-        while (ptrTail-> ptrNext != nullptr) {
-            ptrTail = ptrTail -> ptrNext;
-        }
-    }
-
-    NodeLinkedList* rightList = ConvertTreeToList(root-> ptrRight);
-    if (rightList != nullptr) {
-        ptrTail->ptrNext = rightList;
-    }
-
-    return head;
-}
-
-
 bool isPerfect(Node* head)
 {
     NodeLinkedList* headLL = ConvertTreeToList(head);
     int iNumNos = lenght(headLL);
     int iAltura = altura(head);
-    cout << "altura: " << iAltura <<endl;
-    cout << "nos: " << iNumNos <<endl;
     if (iNumNos == pow(2, iAltura) - 1)
         return true;
     return false;
@@ -215,9 +184,12 @@ bool isComplete(Node* head)
     return false;    
 }
 
-// ordena linked lists
-void BubbleSort(NodeLinkedList** head)
+// converte a árvore em uma lista e ordena com bubble sort
+void BubbleSort(Node* root)
 {
+    NodeLinkedList* aux = ConvertTreeToList(root);
+    NodeLinkedList** head = &aux;
+    
     int len = lenght((*head)) + 1; // +1 pois estamos acrescentando um nó no inicio
     NodeLinkedList* novoHead = (NodeLinkedList*)malloc(sizeof(NodeLinkedList));
     novoHead -> ptrNext = (*head);
@@ -239,4 +211,7 @@ void BubbleSort(NodeLinkedList** head)
     }
     *head = novoHead-> ptrNext;
     free(novoHead);
+
+    cout << "A árvore foi convertida em lista encadeada e organizada com bubble sort: \n";
+    PrintLinkedList((*head));
 }

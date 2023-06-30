@@ -1,4 +1,5 @@
 #include "../include/helper.h"
+#include <iostream>
 
 // auxilia na função print
 void TreeWriter(Node* root, ofstream& outputFile, string prefix, bool isLeft)
@@ -29,6 +30,34 @@ struct Node* lesserLeaf(struct Node* node)
     return ptrCurrent;
 }
 
+NodeLinkedList* ConvertTreeToList(Node* root) 
+{
+    if (root == nullptr) {
+        return nullptr;
+    }
+
+    NodeLinkedList* head = new NodeLinkedList();
+    head-> iPayload = root-> iPayload;
+    head-> ptrNext = nullptr;
+
+    NodeLinkedList* ptrTail = head;
+
+    NodeLinkedList* leftList = ConvertTreeToList(root -> ptrLeft);
+    if (leftList != nullptr) {
+        ptrTail -> ptrNext = leftList;
+        while (ptrTail-> ptrNext != nullptr) {
+            ptrTail = ptrTail -> ptrNext;
+        }
+    }
+
+    NodeLinkedList* rightList = ConvertTreeToList(root-> ptrRight);
+    if (rightList != nullptr) {
+        ptrTail->ptrNext = rightList;
+    }
+
+    return head;
+}
+
 // retorna o tamanho de uma linked list. Usado para fazer o bubble sort da Link List
 int lenght(NodeLinkedList* head)
 {
@@ -41,3 +70,14 @@ int lenght(NodeLinkedList* head)
     }
     return cont;
 }
+
+void PrintLinkedList(NodeLinkedList* head) 
+{
+    NodeLinkedList* current = head;
+    while (current != nullptr) {
+        cout << current->iPayload << " ";
+        current = current->ptrNext;
+    }
+    cout << endl;
+}
+
