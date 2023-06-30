@@ -215,3 +215,104 @@ void BubbleSort(Node* root)
     cout << "A árvore foi convertida em lista encadeada e organizada com bubble sort: \n";
     PrintLinkedList((*head));
 }
+
+/**
+ * Ordena uma lista encadeada usando o algoritmo Insertion Sort.
+ *
+ * @param root Ponteiro para a root da árvore.
+ */
+void insertionSort(Node* root)
+{
+    NodeLinkedList* aux = ConvertTreeToList(root);
+    NodeLinkedList** head = &aux;
+
+    NodeLinkedList* sorted = nullptr;
+    NodeLinkedList* current = *head;
+
+    while (current != nullptr) 
+    {
+        NodeLinkedList* next = current->ptrNext; // Armazena o próximo nó da lista original
+
+        //Usaremos uma nova linked list sorted
+        //Caso o valor atual seja menor que o valor inicial da lista sorted
+        //Ou caso a lista esteja vazia sorted
+        if (sorted == nullptr || current->iPayload < sorted->iPayload) 
+        {
+            // O nó atual é o primeiro nó da lista ordenada
+            current->ptrNext = sorted;
+            sorted = current;
+        } 
+        else 
+        {
+            NodeLinkedList* ptr = sorted;
+            //Verifica se há algum valor maior que o current na lista sorted para fazer a ordenação
+            while (ptr->ptrNext != nullptr && ptr->ptrNext->iPayload < current->iPayload)
+                ptr = ptr->ptrNext;
+            // Insere o nó atual na posição correta da lista sorted
+            current->ptrNext = ptr->ptrNext;
+            ptr->ptrNext = current;
+        }
+
+        current = next; // Atualiza o ponteiro da cabeça para apontar para a lista ordenada
+    }
+
+    *head = sorted; //atualiza a head lista original como a head da sorted list
+    cout << "A árvore foi convertida em lista encadeada e organizada com insertion sort: \n";
+    PrintLinkedList((*head));
+}
+
+void shellSort(Node* root) 
+{
+    NodeLinkedList* aux = ConvertTreeToList(root);
+    NodeLinkedList** head = &aux;
+    
+    int n = 0;
+    NodeLinkedList* current = *head;
+
+    //Computaremos o tamanho da lista (n) encadeada e usaremos para determinar o tamanho do primeiro gap
+    while (current != nullptr) 
+    {
+        current = current->ptrNext;
+        n++;
+    }
+
+    //Usaremos gaps de tamanho inicial n/2 (tamanho da lista/2) e vamos diminuir o gap pela metade até 1
+    for (int gap = n / 2; gap > 0; gap /= 2) 
+    {
+        // Percorre a lista a partir do gap até o final
+        for (int i = gap; i < n; i++) {
+            int temp = 0;
+
+            // Encontra o elemento na posição i
+            NodeLinkedList* ptr = *head;
+
+            for (int j = 0; j < i; j++) 
+            {
+                ptr = ptr->ptrNext;
+            }
+            temp = ptr->iPayload;
+
+            // Encontra o elemento anterior ao elemento na posição i - gap
+            NodeLinkedList* prev = nullptr;
+            NodeLinkedList* current = *head;
+            for (int j = 0; j < i - gap; j++) 
+            {
+                prev = current;
+                current = current->ptrNext;
+            }
+
+            // Realiza a inserção por comparação até que o elemento atual seja menor que o elemento temporário
+            while (prev != nullptr && current->iPayload > temp) 
+            {
+                prev->ptrNext = current->ptrNext;
+                current->ptrNext = ptr->ptrNext;
+                ptr->ptrNext = current;
+
+                current = prev->ptrNext;
+                prev = prev->ptrNext;
+            }
+        }
+    }
+    cout << "A árvore foi convertida em lista encadeada e organizada com shell sort: \n";
+    PrintLinkedList((*head));
+}

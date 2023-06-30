@@ -22,6 +22,8 @@ int main()
         cout << "[7] verifica se a árvore é perfeita" << endl;
         cout << "[8] verifica se a árvore é completa" << endl;
         cout << "[9] converte a árvore em uma lista e ordena com bubble sort" << endl;
+        cout << "[10] converte a árvore em uma lista e ordena com insertion sort" << endl;
+        cout << "[11] converte a árvore em uma lista e ordena com shell sort" << endl;
 
         cout << "[-1] sair" << endl;
         cin >> iInput;
@@ -93,6 +95,16 @@ int main()
         else if(iInput == 9)
         {
             BubbleSort(root);
+        }
+
+        else if(iInput == 10)
+        {
+            insertionSort(root);
+        }
+
+        else if(iInput == 11)
+        {
+            shellSort(root);
         }
 
         clock_t end = clock();
