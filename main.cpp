@@ -70,6 +70,12 @@ int main()
             printTree(root);
         }
 
+        else if (iInput == 7)
+        {
+            cout << isPerfect(root) << endl;
+            cout << isComplete(root) << endl;
+        }
+
         clock_t end = clock();
         double elapsed_secs = double(end - start) / CLOCKS_PER_SEC;
         cout << "Tempo de processamento: " << elapsed_secs << " segundos" << endl;

@@ -1,6 +1,7 @@
 #include "../include/tree.h"
 #include <iostream>
 #include <fstream>
+#include <cmath>
 
 using namespace std;
 
@@ -163,7 +164,42 @@ Node* searchNode(struct Node* node, int iData)
 
 }
 
-// ordena linked lists usando o Bubble Sort
+NodeLinkedList* treeToLinkedList(Node* head)
+{
+    NodeLinkedList* headLL  = (NodeLinkedList*)malloc(sizeof(NodeLinkedList));
+    NodeLinkedList* headLL2  = (NodeLinkedList*)malloc(sizeof(NodeLinkedList));
+    NodeLinkedList* headLL3  = (NodeLinkedList*)malloc(sizeof(NodeLinkedList));
+    headLL -> iPayload = 2;
+    headLL2 -> iPayload = 1;
+    headLL3 -> iPayload = 3;
+    headLL -> ptrNext = headLL2;
+    headLL2 -> ptrNext = headLL3;
+    headLL3 -> ptrNext = nullptr;
+}
+
+bool isPerfect(Node* head)
+{
+    NodeLinkedList* headLL = treeToLinkedList(head);
+    int iNumNos = lenght(headLL);
+    int iAltura = altura(head);
+    cout << "altura: " << iAltura <<endl;
+    cout << "nos: " << iNumNos <<endl;
+    if (iNumNos == pow(2, iAltura) - 1)
+        return true;
+    return false;
+}
+
+bool isComplete(Node* head)
+{
+    NodeLinkedList* headLL = treeToLinkedList(head);
+    int iNumNos = lenght(headLL);
+    int iAltura = altura(head);
+    if (iNumNos >= pow(2, iAltura -1) and iNumNos <= pow(2, iAltura) - 1)
+        return true;
+    return false;    
+}
+
+// ordena linked lists
 void BubbleSort(NodeLinkedList** head)
 {
     int len = lenght((*head)) + 1; // +1 pois estamos acrescentando um nó no inicio
@@ -187,90 +223,4 @@ void BubbleSort(NodeLinkedList** head)
     }
     *head = novoHead-> ptrNext;
     free(novoHead);
-}
-
-/**
- * Ordena uma lista encadeada usando o algoritmo Insertion Sort.
- *
- * @param head O ponteiro para o ponteiro da head da lista encadeada.
- */
-void insertionSort(NodeLinkedList** head)
-{
-    NodeLinkedList* sorted = nullptr;
-    NodeLinkedList* current = *head;
-
-    while (current != nullptr) 
-    {
-        NodeLinkedList* next = current->ptrNext; // Armazena o próximo nó da lista original
-
-        //Usaremos uma nova linked list sorted
-        //Caso o valor atual seja menor que o valor inicial da lista sorted
-        //Ou caso a lista esteja vazia sorted
-        if (sorted == nullptr || current->iPayload < sorted->iPayload) 
-        {
-            // O nó atual é o primeiro nó da lista ordenada
-            current->ptrNext = sorted;
-            sorted = current;
-        } 
-        else 
-        {
-            NodeLinkedList* ptr = sorted;
-            //Verifica se há algum valor maior que o current na lista sorted para fazer a ordenação
-            while (ptr->ptrNext != nullptr && ptr->ptrNext->iPayload < current->iPayload)
-                ptr = ptr->ptrNext;
-            // Insere o nó atual na posição correta da lista sorted
-            current->ptrNext = ptr->ptrNext;
-            ptr->ptrNext = current;
-        }
-
-        current = next; // Atualiza o ponteiro da cabeça para apontar para a lista ordenada
-    }
-
-    *head = sorted; //atualiza a head lista original como a head da sorted list
-}
-
-void shellSort(NodeLinkedList** head) 
-{
-    int n = 0;
-    NodeLinkedList* current = *head;
-
-    while (current != nullptr) 
-    {
-        current = current->ptrNext;
-        n++;
-    }
-
-    //Usaremos gaps de tamanho inicial n/2 (tamanho da lista/2) e vamos diminuir o gap pela metade até 1
-    for (int gap = n / 2; gap > 0; gap /= 2) 
-    {
-        for (int i = gap; i < n; i++) {
-            int temp = 0;
-
-            NodeLinkedList* ptr = *head;
-
-            for (int j = 0; j < i; j++) 
-            {
-                ptr = ptr->ptrNext;
-            }
-            temp = ptr->iPayload;
-
-            NodeLinkedList* prev = nullptr;
-            NodeLinkedList* current = *head;
-            for (int j = 0; j < i - gap; j++) 
-            {
-                prev = current;
-                current = current->ptrNext;
-            }
-
-            while (prev != nullptr && current->iPayload > temp) 
-            {
-                prev->ptrNext = current->ptrNext;
-                current->ptrNext = ptr->ptrNext;
-                ptr->ptrNext = current;
-
-                current = prev->ptrNext;
-                prev = prev->ptrNext;
-            }
-        }
-    }
 }
