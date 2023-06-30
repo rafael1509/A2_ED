@@ -228,3 +228,45 @@ void insertionSort(NodeLinkedList** head)
 
     *head = sorted; //atualiza a head lista original como a head da sorted list
 }
+
+void shellSort(Node** head) {
+    int n = 0;
+    Node* current = *head;
+
+    while (current != nullptr) 
+    {
+        current = current->next;
+        n++;
+    }
+
+    for (int gap = n / 2; gap > 0; gap /= 2) 
+    {
+        for (int i = gap; i < n; i++) {
+            int temp = 0;
+            Node* ptr = *head;
+            for (int j = 0; j < i; j++) 
+            {
+                ptr = ptr->next;
+            }
+            temp = ptr->data;
+
+            Node* prev = nullptr;
+            Node* current = *head;
+            for (int j = 0; j < i - gap; j++) 
+            {
+                prev = current;
+                current = current->next;
+            }
+
+            while (prev != nullptr && current->data > temp) 
+            {
+                prev->next = current->next;
+                current->next = ptr->next;
+                ptr->next = current;
+
+                current = prev->next;
+                prev = prev->next;
+            }
+        }
+    }
+}
