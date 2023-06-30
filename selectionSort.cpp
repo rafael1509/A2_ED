@@ -1,3 +1,11 @@
+/**
+ * Troca os nós que contêm os valores 'x' e 'y' em uma lista encadeada.
+ * (Função para auxiliar o Selection Sort)
+ *
+ * @param head_ref Ponteiro para o ponteiro do início da lista encadeada.
+ * @param x Valor do primeiro nó a ser trocado.
+ * @param y Valor do segundo nó a ser trocado.
+ */
 void swapNodes(struct Node** head_ref, int x, int y)
 {
     if (x == y) return; //Se os números forem iguais, não fará diferença trocá-los.
@@ -30,6 +38,11 @@ void swapNodes(struct Node** head_ref, int x, int y)
     currX->next = temp;
 }
 
+/**
+ * Ordena uma lista encadeada usando o algoritmo Selection Sort.
+ *
+ * @param root Ponteiro para a root da árvore.
+ */
 Node* selectionSort(Node** head)
 {
     struct Node* temp = *head;
