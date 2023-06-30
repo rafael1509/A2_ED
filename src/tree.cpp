@@ -229,43 +229,47 @@ void insertionSort(NodeLinkedList** head)
     *head = sorted; //atualiza a head lista original como a head da sorted list
 }
 
-void shellSort(Node** head) {
+void shellSort(NodeLinkedList** head) 
+{
     int n = 0;
-    Node* current = *head;
+    NodeLinkedList* current = *head;
 
     while (current != nullptr) 
     {
-        current = current->next;
+        current = current->ptrNext;
         n++;
     }
 
+    //Usaremos gaps de tamanho inicial n/2 (tamanho da lista/2) e vamos diminuir o gap pela metade até 1
     for (int gap = n / 2; gap > 0; gap /= 2) 
     {
         for (int i = gap; i < n; i++) {
             int temp = 0;
-            Node* ptr = *head;
+
+            NodeLinkedList* ptr = *head;
+
             for (int j = 0; j < i; j++) 
             {
-                ptr = ptr->next;
+                ptr = ptr->ptrNext;
             }
-            temp = ptr->data;
+            temp = ptr->iPayload;
 
-            Node* prev = nullptr;
-            Node* current = *head;
+            NodeLinkedList* prev = nullptr;
+            NodeLinkedList* current = *head;
             for (int j = 0; j < i - gap; j++) 
             {
                 prev = current;
-                current = current->next;
+                current = current->ptrNext;
             }
 
-            while (prev != nullptr && current->data > temp) 
+            while (prev != nullptr && current->iPayload > temp) 
             {
-                prev->next = current->next;
-                current->next = ptr->next;
-                ptr->next = current;
+                prev->ptrNext = current->ptrNext;
+                current->ptrNext = ptr->ptrNext;
+                ptr->ptrNext = current;
 
-                current = prev->next;
-                prev = prev->next;
+                current = prev->ptrNext;
+                prev = prev->ptrNext;
             }
         }
     }

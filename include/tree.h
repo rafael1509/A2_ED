@@ -33,5 +33,6 @@ Node* deleteNode(struct Node* node, int iData);
 Node* searchNode(struct Node* node, int iData);
 void BubbleSort(NodeLinkedList** head);
 void insertionSort(NodeLinkedList** head);
+void shellSort(NodeLinkedList** head)
 
 #endif 
