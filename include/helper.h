@@ -8,5 +8,6 @@ Node* lesserLeaf(struct Node* node);
 NodeLinkedList* ConvertTreeToList(Node* root);
 int lenght(NodeLinkedList* head);
 void PrintLinkedList(NodeLinkedList* head);
+void displaySort(NodeLinkedList* head);
 
 #endif 

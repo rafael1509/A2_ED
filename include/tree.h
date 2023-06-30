@@ -36,5 +36,6 @@ bool isComplete(Node* head);
 void BubbleSort(Node* root);
 void insertionSort(Node* root);
 void shellSort(Node* root);
+void BubbleSortRepresentation(Node* root);
 
 #endif 

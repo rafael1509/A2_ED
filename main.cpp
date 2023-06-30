@@ -24,6 +24,7 @@ int main()
         cout << "[9] converte a árvore em uma lista e ordena com bubble sort" << endl;
         cout << "[10] converte a árvore em uma lista e ordena com insertion sort" << endl;
         cout << "[11] converte a árvore em uma lista e ordena com shell sort" << endl;
+        cout << "[11] Representação gráfica da ordenação com Bubble sort" << endl;
 
         cout << "[-1] sair" << endl;
         cin >> iInput;
@@ -105,6 +106,11 @@ int main()
         else if(iInput == 11)
         {
             shellSort(root);
+        }
+
+        else if(iInput == 12)
+        {
+            BubbleSortRepresentation(root);
         }
 
         clock_t end = clock();

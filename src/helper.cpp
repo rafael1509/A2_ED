@@ -1,5 +1,8 @@
 #include "../include/helper.h"
 #include <iostream>
+#include <cstdlib>
+#include <chrono>
+#include <thread>
 
 /**
  * Escreve uma representação visual da árvore no arquivo de saída.
@@ -109,3 +112,11 @@ void PrintLinkedList(NodeLinkedList* head)
     cout << endl;
 }
 
+void displaySort(NodeLinkedList* head) 
+{
+    NodeLinkedList* current = head;
+    while (current != nullptr) {
+        std::cout << std::string(current->iPayload, '*') << std::endl;
+        current = current->ptrNext;
+    }
+}
