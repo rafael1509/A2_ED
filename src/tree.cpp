@@ -164,22 +164,38 @@ Node* searchNode(struct Node* node, int iData)
 
 }
 
-NodeLinkedList* treeToLinkedList(Node* head)
+NodeLinkedList* ConvertTreeToList(Node* root) 
 {
-    NodeLinkedList* headLL  = (NodeLinkedList*)malloc(sizeof(NodeLinkedList));
-    NodeLinkedList* headLL2  = (NodeLinkedList*)malloc(sizeof(NodeLinkedList));
-    NodeLinkedList* headLL3  = (NodeLinkedList*)malloc(sizeof(NodeLinkedList));
-    headLL -> iPayload = 2;
-    headLL2 -> iPayload = 1;
-    headLL3 -> iPayload = 3;
-    headLL -> ptrNext = headLL2;
-    headLL2 -> ptrNext = headLL3;
-    headLL3 -> ptrNext = nullptr;
+    if (root == nullptr) {
+        return nullptr;
+    }
+
+    NodeLinkedList* head = new NodeLinkedList();
+    head-> iPayload = root-> iPayload;
+    head-> ptrNext = nullptr;
+
+    NodeLinkedList* ptrTail = head;
+
+    NodeLinkedList* leftList = ConvertTreeToList(root -> ptrLeft);
+    if (leftList != nullptr) {
+        ptrTail -> ptrNext = leftList;
+        while (ptrTail-> ptrNext != nullptr) {
+            ptrTail = ptrTail -> ptrNext;
+        }
+    }
+
+    NodeLinkedList* rightList = ConvertTreeToList(root-> ptrRight);
+    if (rightList != nullptr) {
+        ptrTail->ptrNext = rightList;
+    }
+
+    return head;
 }
+
 
 bool isPerfect(Node* head)
 {
-    NodeLinkedList* headLL = treeToLinkedList(head);
+    NodeLinkedList* headLL = ConvertTreeToList(head);
     int iNumNos = lenght(headLL);
     int iAltura = altura(head);
     cout << "altura: " << iAltura <<endl;
@@ -191,7 +207,7 @@ bool isPerfect(Node* head)
 
 bool isComplete(Node* head)
 {
-    NodeLinkedList* headLL = treeToLinkedList(head);
+    NodeLinkedList* headLL = ConvertTreeToList(head);
     int iNumNos = lenght(headLL);
     int iAltura = altura(head);
     if (iNumNos >= pow(2, iAltura -1) and iNumNos <= pow(2, iAltura) - 1)

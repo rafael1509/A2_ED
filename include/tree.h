@@ -31,6 +31,7 @@ void printTree(Node* root);
 int altura(struct Node* node);
 Node* deleteNode(struct Node* node, int iData);
 Node* searchNode(struct Node* node, int iData);
+NodeLinkedList* ConvertTreeToList(Node* root);
 bool isPerfect(Node* head);
 bool isComplete(Node* head);
 void BubbleSort(NodeLinkedList** head);
