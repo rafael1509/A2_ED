@@ -12,7 +12,7 @@ construção de um explorador de árvores
 - [x] driver code
 - [x] codigo organizado em modulos (.cp e .h ou .hpp)
 - [ ] menu ascII para o usuario com as opcoes de uso
-- [ ] todas as operações devem indicar o tempo de processamento utilizado após a finalização
+- [x] todas as operações devem indicar o tempo de processamento utilizado após a finalização
 - [x] uma das opçoes deve ser a construção de uma árvore binária de busca a partir de um arquivo de texto
 - [x] uma das opçoes deve ser a construção de uma árvore binária de busca a partir de dados digitados pelo usuário
 - [x] uma das opçoes deve ser informar a altura da árvore
