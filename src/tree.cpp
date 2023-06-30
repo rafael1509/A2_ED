@@ -163,7 +163,7 @@ Node* searchNode(struct Node* node, int iData)
 
 }
 
-// ordena linked lists
+// ordena linked lists usando o Bubble Sort
 void BubbleSort(NodeLinkedList** head)
 {
     int len = lenght((*head)) + 1; // +1 pois estamos acrescentando um nó no inicio
@@ -187,4 +187,33 @@ void BubbleSort(NodeLinkedList** head)
     }
     *head = novoHead-> ptrNext;
     free(novoHead);
+}
+
+void insertionSort(NodeLinkedList** head) 
+{
+    NodeLinkedList* sorted = nullptr;
+    NodeLinkedList* current = *head;
+
+    while (current != nullptr) 
+    {
+        NodeLinkedList* next = current->ptrNext;
+
+        if (sorted == nullptr || current->iPayload < sorted->iPayload) 
+        {
+            current->ptrNext = sorted;
+            sorted = current;
+        } 
+        else 
+        {
+            NodeLinkedList* ptr = sorted;
+            while (ptr->ptrNext != nullptr && ptr->ptrNext->iPayload < current->iPayload)
+                ptr = ptr->ptrNext;
+            current->ptrNext = ptr->ptrNext;
+            ptr->ptrNext = current;
+        }
+
+        current = next;
+    }
+
+    *head = sorted;
 }
