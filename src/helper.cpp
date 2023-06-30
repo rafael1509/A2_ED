@@ -112,6 +112,15 @@ void PrintLinkedList(NodeLinkedList* head)
     cout << endl;
 }
 
+// Função para inserir um novo nó no início da lista
+void insertAtBeginning(NodeLinkedList*& head, int data) 
+{
+    NodeLinkedList* newNode = new NodeLinkedList;
+    newNode->iPayload = data;
+    newNode->ptrNext = head;
+    head = newNode;
+}
+
 void displaySort(NodeLinkedList* head) 
 {
     NodeLinkedList* current = head;

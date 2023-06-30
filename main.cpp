@@ -24,7 +24,7 @@ int main()
         cout << "[9] converte a árvore em uma lista e ordena com bubble sort" << endl;
         cout << "[10] converte a árvore em uma lista e ordena com insertion sort" << endl;
         cout << "[11] converte a árvore em uma lista e ordena com shell sort" << endl;
-        cout << "[11] Representação gráfica da ordenação com Bubble sort" << endl;
+        cout << "[12] Representação gráfica da ordenação com Bubble sort" << endl;
 
         cout << "[-1] sair" << endl;
         cin >> iInput;
@@ -100,7 +100,11 @@ int main()
 
         else if(iInput == 10)
         {
-            insertionSort(root);
+            NodeLinkedList* aux = ConvertTreeToList(root);
+            NodeLinkedList** head = &aux;
+            insertionSort(head);
+            cout << "A árvore foi convertida em lista encadeada e organizada com insertion sort: \n";
+            PrintLinkedList((*head));
         }
 
         else if(iInput == 11)
