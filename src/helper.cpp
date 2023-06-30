@@ -112,7 +112,12 @@ void PrintLinkedList(NodeLinkedList* head)
     cout << endl;
 }
 
-// Função para inserir um novo nó no início da lista
+/**
+ * Insere um novo elemento no início da lista encadeada.
+ *
+ * @param head Referência ao ponteiro para a head da lista encadeada.
+ * @param data O valor a ser inserido.
+ */
 void insertAtBeginning(NodeLinkedList*& head, int data) 
 {
     NodeLinkedList* newNode = new NodeLinkedList;
@@ -121,6 +126,12 @@ void insertAtBeginning(NodeLinkedList*& head, int data)
     head = newNode;
 }
 
+/**
+ * Exibe os elementos da lista encadeada de forma ordenada.
+ * Cada elemento é exibido como uma sequência de asteriscos (*).
+ *
+ * @param head Ponteiro paraa head da lista encadeada.
+ */
 void displaySort(NodeLinkedList* head) 
 {
     NodeLinkedList* current = head;
