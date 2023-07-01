@@ -524,6 +524,7 @@ void ShellSortRepresentation(Node* root)
     iLen++; // +1 pois estamos acrescentando um nó no início
 
     NodeLinkedList* novoHead = new NodeLinkedList();
+    novoHead->iPayload = 0;
     novoHead->ptrNext = *head;
 
     for (int gap = iLen / 2; gap > 0; gap /= 2) {
@@ -551,7 +552,6 @@ void ShellSortRepresentation(Node* root)
             }
         }
     }
-
     *head = novoHead->ptrNext;
     delete novoHead;
 }
