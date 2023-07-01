@@ -87,14 +87,14 @@ NodeLinkedList* ConvertTreeToList(Node* root)
  */
 int lenght(NodeLinkedList* head)
 {
-    int cont = 1;
+    int iCont = 1;
     NodeLinkedList* temp = head;
     while (temp -> ptrNext != nullptr)
     {
         temp = temp-> ptrNext;
-        cont ++;
+        iCont ++;
     }
-    return cont;
+    return iCont;
 }
 
 /**
@@ -118,10 +118,10 @@ void PrintLinkedList(NodeLinkedList* head)
  * @param head Referência ao ponteiro para a head da lista encadeada.
  * @param data O valor a ser inserido.
  */
-void insertAtBeginning(NodeLinkedList*& head, int data) 
+void insertAtBeginning(NodeLinkedList*& head, int iData) 
 {
     NodeLinkedList* newNode = new NodeLinkedList;
-    newNode->iPayload = data;
+    newNode->iPayload = iData;
     newNode->ptrNext = head;
     head = newNode;
 }

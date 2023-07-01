@@ -47,7 +47,7 @@ int main()
 
         else if (iInput == 2)
         {
-            cout << "Altura da árvore: " << altura(root) << endl;
+            cout << "Altura da árvore: " << calcAltura(root) << endl;
         }
 
         else if (iInput == 3)

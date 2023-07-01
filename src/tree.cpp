@@ -128,13 +128,13 @@ void printTree(Node* root)
  * @param node Ponteiro para a root da árvore a ser utilizada.
  * @return Inteiro que informa a altura da árvore.
  */
-int altura(struct Node* node)
+int calcAltura(struct Node* node)
 {
   int iAltura = 0;
   if(node != nullptr)
   {
-    int iAlturaL = altura(node -> ptrLeft);
-    int iAlturaR = altura(node -> ptrRight);
+    int iAlturaL = calcAltura(node -> ptrLeft);
+    int iAlturaR = calcAltura(node -> ptrRight);
     int iMaxAltura = max(iAlturaL, iAlturaR);
     iAltura = iMaxAltura + 1;
   }
@@ -226,7 +226,7 @@ bool isPerfect(Node* head)
 {
     NodeLinkedList* headLL = ConvertTreeToList(head);
     int iNumNos = lenght(headLL);
-    int iAltura = altura(head);
+    int iAltura = calcAltura(head);
     if (iNumNos == pow(2, iAltura) - 1)
         return true;
     return false;
@@ -242,7 +242,7 @@ bool isComplete(Node* head)
 {
     NodeLinkedList* headLL = ConvertTreeToList(head);
     int iNumNos = lenght(headLL);
-    int iAltura = altura(head);
+    int iAltura = calcAltura(head);
     if (iNumNos >= pow(2, iAltura -1) and iNumNos <= pow(2, iAltura) - 1)
         return true;
     return false;    
@@ -258,10 +258,10 @@ void BubbleSort(Node* root)
     NodeLinkedList* aux = ConvertTreeToList(root);
     NodeLinkedList** head = &aux;
     
-    int len = lenght((*head)) + 1; // +1 pois estamos acrescentando um nó no inicio
+    int iLen = lenght((*head)) + 1; // +1 pois estamos acrescentando um nó no inicio
     NodeLinkedList* novoHead = (NodeLinkedList*)malloc(sizeof(NodeLinkedList));
     novoHead -> ptrNext = (*head);
-    for (int i = len-2; i > 0; i--) // o for para no antepenultimo nó
+    for (int i = iLen-2; i > 0; i--) // o for para no antepenultimo nó
     {
         NodeLinkedList* current = novoHead;
         for (int j = 0; j<i; j++)
@@ -287,7 +287,7 @@ void BubbleSort(Node* root)
 /**
  * Ordena uma lista encadeada usando o algoritmo Insertion Sort.
  *
- * @param head Ponteiro para o primeiro item da lista que é o root da árvore.
+ * @param head Ponteiro para o primeiro item da lista encadeada
  */
 void insertionSort(NodeLinkedList** head)
 {
@@ -325,9 +325,9 @@ void insertionSort(NodeLinkedList** head)
 }
 
 /**
- * Ordena uma lista encadeada usando o algoritmo Insertion Sort.
+ * Ordena uma lista encadeada usando o algoritmo Selection Sort.
  *
- * @param head Ponteiro para o primeiro item da lista que é o root da árvore.
+ * @param root Ponteiro para a root da árvore.
  */
 void selectionSort(Node* root)
 {
@@ -356,38 +356,38 @@ void selectionSort(Node* root)
 /**
  * Ordena uma lista encadeada usando o algoritmo Shell Sort.
  *
- * @param root Ponteiro para a root da árvore.
+ * @param head Ponteiro para o primeiro item da lista encadeada
  */
 void shellSort(NodeLinkedList** head) 
 {
-    int size = lenght(*head);
-    int gap = size / 2;
+    int iSize = lenght(*head);
+    int iGap = iSize / 2;
 
-    while (gap > 0) {
-        for (int i = 0; i < gap; i++) {
+    while (iGap > 0) {
+        for (int i = 0; i < iGap; i++) {
             NodeLinkedList* sublistHead = nullptr;
             NodeLinkedList* current = *head;
-            int sublistIndex = 0;
+            int iSublistIndex = 0;
 
             while (current != nullptr) {
-                if (sublistIndex % gap == i) {
+                if (iSublistIndex % iGap == i) {
                     insertAtBeginning(sublistHead, current->iPayload);
                 }
                 current = current->ptrNext;
-                sublistIndex++;
+                iSublistIndex++;
             }
 
             insertionSort(&sublistHead);
 
             current = *head;
-            sublistIndex = 0;
+            iSublistIndex = 0;
             while (current != nullptr) {
-                if (sublistIndex % gap == i) {
+                if (iSublistIndex % iGap == i) {
                     current->iPayload = sublistHead->iPayload;
                     sublistHead = sublistHead->ptrNext;
                 }
                 current = current->ptrNext;
-                sublistIndex++;
+                iSublistIndex++;
             }
 
             while (sublistHead != nullptr) {
@@ -396,7 +396,7 @@ void shellSort(NodeLinkedList** head)
                 delete temp;
             }
         }
-        gap /= 2;
+        iGap /= 2;
     }
     cout << "A árvore foi convertida em lista encadeada e organizada com shell sort: \n";
     PrintLinkedList((*head));
@@ -412,10 +412,10 @@ void BubbleSortRepresentation(Node* root)
     NodeLinkedList* aux = ConvertTreeToList(root);
     NodeLinkedList** head = &aux;
     
-    int len = lenght((*head)) + 1; // +1 pois estamos acrescentando um nó no inicio
+    int iLen = lenght((*head)) + 1; // +1 pois estamos acrescentando um nó no inicio
     NodeLinkedList* novoHead = (NodeLinkedList*)malloc(sizeof(NodeLinkedList));
     novoHead -> ptrNext = (*head);
-    for (int i = len-2; i > 0; i--) // o for para no antepenultimo nó
+    for (int i = iLen-2; i > 0; i--) // o for para no antepenultimo nó
     {
         NodeLinkedList* current = novoHead;
         for (int j = 0; j<i; j++)

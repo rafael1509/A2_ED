@@ -28,7 +28,7 @@ Node* createByUser();
 Node* createByTextFile(string strFileName);
 void TreeWriter(Node* root, ofstream& outputFile, string prefix, bool isLeft);
 void printTree(Node* root);
-int altura(struct Node* node);
+int calcAltura(struct Node* node);
 Node* deleteNode(struct Node* node, int iData);
 Node* searchNode(struct Node* node, int iData);
 bool isPerfect(Node* head);
