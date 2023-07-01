@@ -468,7 +468,7 @@ void BubbleSortRepresentation(Node* root)
                 system("cls");  // Limpa a tela do console (funciona no Windows)
                 cout <<"Bubble Sort: " << endl;
                 displaySort(novoHead->ptrNext);
-                //this_thread::sleep_for(chrono::milliseconds(500));  // Atraso em milissegundos
+                this_thread::sleep_for(chrono::milliseconds(500));  // Atraso em milissegundos
             }
         current = current -> ptrNext;
         }
@@ -477,6 +477,11 @@ void BubbleSortRepresentation(Node* root)
     free(novoHead);
 }
 
+/**
+ * Esta função executa o Insertion Sort em uma representação de lista encadeada de uma árvore binária.
+ *
+ * @param root O nó raiz da árvore que representa a estrutura de dados.
+ **/
 void insertionSortRepresentation(Node* root) 
 {
     NodeLinkedList* aux = ConvertTreeToList(root);
@@ -495,6 +500,7 @@ void insertionSortRepresentation(Node* root)
         } 
         else 
         {
+            // Encontrar o local apropriado na lista ordenada para inserir o elemento atual
             NodeLinkedList* temp = sorted;
             while (temp->ptrNext != nullptr && temp->ptrNext->iPayload < current->iPayload) 
             {
@@ -506,6 +512,7 @@ void insertionSortRepresentation(Node* root)
 
         current = nextNode;
 
+        // representação gráfica
         system("cls");
         system("cls");  // Limpa a tela do console (funciona no Windows)
         cout << "Insertion Sort: " << endl;
@@ -514,12 +521,17 @@ void insertionSortRepresentation(Node* root)
         cout << endl;
         cout << "Lista organizada: " << endl;
         displaySort(sorted);
-        //this_thread::sleep_for(chrono::milliseconds(500));  // Atraso em milissegundos
+        this_thread::sleep_for(chrono::milliseconds(500));  // Atraso em milissegundos
     }
 
     head = sorted;
 }
 
+/**
+ * Esta função executa o Selection Sort em uma representação de lista encadeada de uma árvore binária.
+ *
+ * @param root O nó raiz da árvore que representa a estrutura de dados.
+ **/
 void selectionSortRepresentation(Node* root)
 {
     NodeLinkedList* aux = ConvertTreeToList(root);
@@ -539,14 +551,21 @@ void selectionSortRepresentation(Node* root)
         }
         swapNodes(head, temp->iPayload, min->iPayload); //Chamo a troca de nós entre o nó que estou e o mínimo encontrado
         temp = min->ptrNext; //Redireciono o nó que vou olhar
+
+        // representação gráfica
         system("cls");
         system("cls");  // Limpa a tela do console (funciona no Windows)
         cout << "Selection Sort: " << endl;
         displaySort(*head);
-        //this_thread::sleep_for(chrono::milliseconds(500));  // Atraso em milissegundos
+        this_thread::sleep_for(chrono::milliseconds(500));  // Atraso em milissegundos
     }
 }
 
+/**
+ * Esta função executa o Shell Sort em uma representação de lista encadeada de uma árvore binária.
+ *
+ * @param root O nó raiz da árvore que representa a estrutura de dados.
+ **/
 void ShellSortRepresentation(Node* root) 
 {
     NodeLinkedList* aux = ConvertTreeToList(root);
@@ -582,7 +601,7 @@ void ShellSortRepresentation(Node* root)
                 cout << "Shell Sort: " << endl;
                 displaySort(novoHead->ptrNext);
                 cout << endl;
-                //std::this_thread::sleep_for(std::chrono::milliseconds(500));  // Atraso em milissegundos
+                std::this_thread::sleep_for(std::chrono::milliseconds(500));  // Atraso em milissegundos
 
                 temp = current->ptrNext;
                 current = current->ptrNext;
