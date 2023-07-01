@@ -7,8 +7,8 @@ construção de um explorador de árvores
 ```.\main.exe```
 
 # check list
-- [ ] notação hungara
-- [ ] comentarios em funções
+- [x] notação hungara
+- [x] comentarios em funções
 - [x] driver code
 - [x] codigo organizado em modulos (.cp e .h ou .hpp)
 - [x] menu ascII para o usuario com as opcoes de uso
@@ -22,7 +22,8 @@ construção de um explorador de árvores
 - [x] uma das opçoes deve informar se a árvore é completa
 - [x] uma das opçoes deve informar se a árvore é perfeita
 - [x] uma das opçoes deve converter a árvore em uma lista e ordenar com bubble sort
-- [ ] uma das opçoes deve converter a árvore em uma lista e ordenar com selection sort
-- [ ] uma das opçoes deve converter a árvore em uma lista e ordenar com insertion sort
-- [ ] uma das opçoes deve converter a árvore em uma lista e ordenar com shell sort
-- [x] representação gráfica da ordenação
+- [x] uma das opçoes deve converter a árvore em uma lista e ordenar com selection sort
+- [x] uma das opçoes deve converter a árvore em uma lista e ordenar com insertion sort
+- [x] uma das opçoes deve converter a árvore em uma lista e ordenar com shell sort
+- [?] exibir arvore utilizando bfs
+- [ ] representação gráfica da ordenação
