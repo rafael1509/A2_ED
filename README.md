@@ -25,5 +25,5 @@ construção de um explorador de árvores
 - [x] uma das opçoes deve converter a árvore em uma lista e ordenar com selection sort
 - [x] uma das opçoes deve converter a árvore em uma lista e ordenar com insertion sort
 - [x] uma das opçoes deve converter a árvore em uma lista e ordenar com shell sort
-- [?] exibir arvore utilizando bfs
-- [ ] representação gráfica da ordenação
+- [x] exibir arvore utilizando bfs
+- [x] representação gráfica da ordenação
