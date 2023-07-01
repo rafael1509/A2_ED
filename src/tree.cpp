@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <chrono>
 #include <thread>
+#include <queue>
 
 using namespace std;
 /**
@@ -54,7 +55,7 @@ Node* createByUser()
 
     while (true)
     {
-        cout << "Digite um valor para adicionar na árvore: (-1 para parar)";
+        cout << "Digite um valor para adicionar na arvore: (-1 para parar)";
         cin >> iNum;
 
         if (iNum == -1)
@@ -92,7 +93,7 @@ Node* createByTextFile(string strFileName)
         }
         catch(const exception& e)
         {
-            cerr << "Termo inválido para ser adicionado na árvore" << e.what() << endl;
+            cerr << "Termo invalido para ser adicionado na arvore" << e.what() << endl;
             break;
         }
     }
@@ -119,7 +120,43 @@ void printTree(Node* root)
     TreeWriter(root, outputFile, "", true);
 
     outputFile.close();
-    cout << "Visualização salva em: 'output/tree_visualization.txt'" << endl;
+    cout << "Visualizacao salva em: 'output/tree_visualization.txt'" << endl;
+}
+
+/**
+ * Função para percorrer a árvore em largura (BFS) e exibir os elementos.
+ * 
+ * @param root Ponteiro para a raiz da árvore.
+ */
+void BFS(Node* root) 
+{
+    if (root == NULL) {
+        return;
+    }
+
+    // Cria uma fila para armazenar os nós da árvore a serem processados
+    queue<Node*> q;
+    q.push(root);
+
+    while (!q.empty()) {
+        // Obtém o nó da frente da fila
+        Node* currentNode = q.front();
+
+        cout << currentNode->iPayload << endl;
+
+        // Verifica se o nó possui um filho esquerdo e o adiciona à fila
+        if (currentNode->ptrLeft != NULL) {
+            q.push(currentNode->ptrLeft);
+        }
+
+        // Verifica se o nó possui um filho direito e o adiciona à fila
+        if (currentNode->ptrRight != NULL) {
+            q.push(currentNode->ptrRight);
+        }
+
+        // Remove o nó atual da frente da fila
+        q.pop();
+    }
 }
 
 /**
@@ -280,7 +317,7 @@ void BubbleSort(Node* root)
     *head = novoHead-> ptrNext;
     free(novoHead);
 
-    cout << "A árvore foi convertida em lista encadeada e organizada com bubble sort: \n";
+    cout << "A arvore foi convertida em lista encadeada e organizada com bubble sort: \n";
     PrintLinkedList((*head));
 }
 
@@ -349,7 +386,7 @@ void selectionSort(Node* root)
         swapNodes(head, temp->iPayload, min->iPayload); //Chamo a troca de nós entre o nó que estou e o mínimo encontrado
         temp = min->ptrNext; //Redireciono o nó que vou olhar
     }
-    cout << "A árvore foi convertida em lista encadeada e organizada com Selection sort: \n";
+    cout << "A arvore foi convertida em lista encadeada e organizada com Selection sort: \n";
     PrintLinkedList((*head));
 }
 
@@ -398,7 +435,7 @@ void shellSort(NodeLinkedList** head)
         }
         iGap /= 2;
     }
-    cout << "A árvore foi convertida em lista encadeada e organizada com shell sort: \n";
+    cout << "A arvore foi convertida em lista encadeada e organizada com shell sort: \n";
     PrintLinkedList((*head));
 }
 
@@ -431,7 +468,7 @@ void BubbleSortRepresentation(Node* root)
                 system("cls");  // Limpa a tela do console (funciona no Windows)
                 cout <<"Bubble Sort: " << endl;
                 displaySort(novoHead->ptrNext);
-                this_thread::sleep_for(chrono::milliseconds(500));  // Atraso em milissegundos
+                //this_thread::sleep_for(chrono::milliseconds(500));  // Atraso em milissegundos
             }
         current = current -> ptrNext;
         }
@@ -477,7 +514,7 @@ void insertionSortRepresentation(Node* root)
         cout << endl;
         cout << "Lista organizada: " << endl;
         displaySort(sorted);
-        this_thread::sleep_for(chrono::milliseconds(500));  // Atraso em milissegundos
+        //this_thread::sleep_for(chrono::milliseconds(500));  // Atraso em milissegundos
     }
 
     head = sorted;
@@ -506,7 +543,7 @@ void selectionSortRepresentation(Node* root)
         system("cls");  // Limpa a tela do console (funciona no Windows)
         cout << "Selection Sort: " << endl;
         displaySort(*head);
-        this_thread::sleep_for(chrono::milliseconds(500));  // Atraso em milissegundos
+        //this_thread::sleep_for(chrono::milliseconds(500));  // Atraso em milissegundos
     }
 }
 
@@ -545,7 +582,7 @@ void ShellSortRepresentation(Node* root)
                 cout << "Shell Sort: " << endl;
                 displaySort(novoHead->ptrNext);
                 cout << endl;
-                std::this_thread::sleep_for(std::chrono::milliseconds(500));  // Atraso em milissegundos
+                //std::this_thread::sleep_for(std::chrono::milliseconds(500));  // Atraso em milissegundos
 
                 temp = current->ptrNext;
                 current = current->ptrNext;

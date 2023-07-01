@@ -14,12 +14,13 @@ int main()
         if (iInput == -2)
         {
             cout << "=====================================================" << endl;
-            cout << "Explorador de árvores" <<endl;
-            cout << "Opções:" << endl;
-            cout << "[0] construção de uma árvore binária de busca a partir de um arquivo de texto" << endl;
-            cout << "[1] construção de uma árvore binária de busca a partir de dados digitados pelo usuário" <<endl;
-            cout << "[-1] sair" << endl;
+            cout << "EXPLORADOR DE ARVORES" << endl;
+            cout << "OPCOES:" << endl;
+            cout << "[0] CONSTRUCAO DE UMA ARVORE BINARIA DE BUSCA A PARTIR DE UM ARQUIVO DE TEXTO" << endl;
+            cout << "[1] CONSTRUCAO DE UMA ARVORE BINARIA DE BUSCA A PARTIR DE DADOS DIGITADOS PELO USUARIO" << endl;
+            cout << "[-1] SAIR" << endl;
             cout << "=====================================================" << endl;
+
             cin >> iInput;
         }
 
@@ -41,33 +42,35 @@ int main()
         else if (iInput == -3)
         {
             cout << "=====================================================" << endl;
-            cout << "Opções de Ações para sua árvore" <<endl;
-            cout << "[2] informar a altura da árvore" <<endl;
-            cout << "[3] inserção de um elemento fornecido pelo usuário" <<endl;
-            cout << "[4] remoção de um elemento fornecido pelo usuário" <<endl;
-            cout << "[5] busca do endereço de memória de um elemento fornecido pelo usuário" <<endl;
-            cout << "[6] representação gráfica da ordenação" << endl;
-            cout << "[7] verifica se a árvore é perfeita" << endl;
-            cout << "[8] verifica se a árvore é completa" << endl;
-            cout << "[9] converte a árvore em uma lista e ordena com bubble sort" << endl;
-            cout << "[10] converte a árvore em uma lista e ordena com insertion sort" << endl;
-            cout << "[11] converte a árvore em uma lista e ordena com selection sort" << endl;
-            cout << "[12] converte a árvore em uma lista e ordena com shell sort" << endl;
-            cout << "[13] Representação gráfica da ordenação com Bubble sort" << endl;
-            cout << "[14] Representação gráfica da ordenação com Insertion sort" << endl;
-            cout << "[15] Representação gráfica da ordenação com Selection sort" << endl;
-            cout << "[16] Representação gráfica da ordenação com Shell sort" << endl;
+            cout << "OPCOES DE ACOES PARA SUA ARVORE" << endl;
+            cout << "[2] INFORMAR A ALTURA DA ARVORE" << endl;
+            cout << "[3] INSERCAO DE UM ELEMENTO FORNECIDO PELO USUARIO" << endl;
+            cout << "[4] REMOCAO DE UM ELEMENTO FORNECIDO PELO USUARIO" << endl;
+            cout << "[5] BUSCA DO ENDERECO DE MEMORIA DE UM ELEMENTO FORNECIDO PELO USUARIO" << endl;
+            cout << "[6] REPRESENTACAO GRAFICA DA ARVORE" << endl;
+            cout << "[7] EXIBICAO DA ARVORE UTILIZANDO BFS" << endl;
+            cout << "[8] VERIFICA SE A ARVORE E PERFEITA" << endl;
+            cout << "[9] VERIFICA SE A ARVORE E COMPLETA" << endl;
+            cout << "[10] CONVERTE A ARVORE EM UMA LISTA E ORDENA COM BUBBLE SORT" << endl;
+            cout << "[11] CONVERTE A ARVORE EM UMA LISTA E ORDENA COM INSERTION SORT" << endl;
+            cout << "[12] CONVERTE A ARVORE EM UMA LISTA E ORDENA COM SELECTION SORT" << endl;
+            cout << "[13] CONVERTE A ARVORE EM UMA LISTA E ORDENA COM SHELL SORT" << endl;
+            cout << "[14] REPRESENTACAO GRAFICA DA ORDENACAO COM BUBBLE SORT" << endl;
+            cout << "[15] REPRESENTACAO GRAFICA DA ORDENACAO COM INSERTION SORT" << endl;
+            cout << "[16] REPRESENTACAO GRAFICA DA ORDENACAO COM SELECTION SORT" << endl;
+            cout << "[17] REPRESENTACAO GRAFICA DA ORDENACAO COM SHELL SORT" << endl;
 
-            cout << "[-1] sair" << endl;
-            cout << "[-2] Voltar ao menu inicial e criar uma nova árvore" << endl;
+            cout << "[-1] SAIR" << endl;
+            cout << "[-2] VOLTAR AO MENU INICIAL E CRIAR UMA NOVA ARVORE" << endl;
             cout << "=====================================================" << endl;
+
             cin >> iInput;
         }
 
         else if (iInput == 2)
         {
             clock_t start = clock();
-            cout << "Altura da árvore: " << calcAltura(root) << endl;
+            cout << "Altura da arvore: " << calcAltura(root) << endl;
             clock_t end = clock();
             double elapsed_secs = double(end - start) / CLOCKS_PER_SEC;
             cout << "Tempo de processamento: " << elapsed_secs << " segundos" << endl;
@@ -78,7 +81,7 @@ int main()
         {
             clock_t start = clock();
             int iValor = 0;
-            cout << "Informe um valor para adicionar na árvore: ";
+            cout << "Informe um valor para adicionar na arvore: ";
             cin >> iValor;
             insertNode(root, iValor);
             clock_t end = clock();
@@ -91,7 +94,7 @@ int main()
         {
             clock_t start = clock();
             int iValor = 0;
-            cout << "Informe um valor para remover da árvore: ";
+            cout << "Informe um valor para remover da arvore: ";
             cin >> iValor;
             deleteNode(root, iValor);
             clock_t end = clock();
@@ -104,9 +107,9 @@ int main()
         {
             clock_t start = clock();
             int iValor = 0;
-            cout << "Informe um valor para buscar seu endereço de memória na árvore: ";
+            cout << "Informe um valor para buscar seu endereco de memória na arvore: ";
             cin >> iValor;
-            cout << "Posição de " << iValor << ": " << searchNode(root, iValor);
+            cout << "Posicao de " << iValor << ": " << searchNode(root, iValor) << endl;
             clock_t end = clock();
             double elapsed_secs = double(end - start) / CLOCKS_PER_SEC;
             cout << "Tempo de processamento: " << elapsed_secs << " segundos" << endl;
@@ -123,13 +126,11 @@ int main()
             iInput = -3;
         }
 
-        else if (iInput == 7)
+        else if (iInput == 7) 
         {
             clock_t start = clock();
-            if (isPerfect(root))
-                cout << "A árvore é perfeita" << endl;
-            else
-                cout << "A árvore não é perfeita" << endl;
+            cout << "\nBFS:" << endl;
+            BFS(root);
             clock_t end = clock();
             double elapsed_secs = double(end - start) / CLOCKS_PER_SEC;
             cout << "Tempo de processamento: " << elapsed_secs << " segundos" << endl;
@@ -139,17 +140,30 @@ int main()
         else if (iInput == 8)
         {
             clock_t start = clock();
-            if (isComplete(root))
-                cout << "A árvore é completa" << endl;
+            if (isPerfect(root))
+                cout << "A arvore e perfeita" << endl;
             else
-                cout << "A árvore não é completa" << endl;
+                cout << "A arvore nao e perfeita" << endl;
             clock_t end = clock();
             double elapsed_secs = double(end - start) / CLOCKS_PER_SEC;
             cout << "Tempo de processamento: " << elapsed_secs << " segundos" << endl;
             iInput = -3;
         }
 
-        else if(iInput == 9)
+        else if (iInput == 9)
+        {
+            clock_t start = clock();
+            if (isComplete(root))
+                cout << "A arvore e completa" << endl;
+            else
+                cout << "A arvore nao e completa" << endl;
+            clock_t end = clock();
+            double elapsed_secs = double(end - start) / CLOCKS_PER_SEC;
+            cout << "Tempo de processamento: " << elapsed_secs << " segundos" << endl;
+            iInput = -3;
+        }
+
+        else if(iInput == 10)
         {
             clock_t start = clock();
             BubbleSort(root);
@@ -160,13 +174,13 @@ int main()
 
         }
 
-        else if(iInput == 10)
+        else if(iInput == 11)
         {
             clock_t start = clock();
             NodeLinkedList* aux = ConvertTreeToList(root);
             NodeLinkedList** head = &aux;
             insertionSort(head);
-            cout << "A árvore foi convertida em lista encadeada e organizada com Insertion sort: \n";
+            cout << "A arvore foi convertida em lista encadeada e organizada com Insertion sort: \n";
             PrintLinkedList((*head));
             clock_t end = clock();
             double elapsed_secs = double(end - start) / CLOCKS_PER_SEC;
@@ -174,7 +188,7 @@ int main()
             iInput = -3;
         }
 
-        else if(iInput == 11)
+        else if(iInput == 12)
         {
             clock_t start = clock();
             selectionSort(root);
@@ -184,7 +198,7 @@ int main()
             iInput = -3;
         }
 
-        else if(iInput == 12)
+        else if(iInput == 13)
         {
             clock_t start = clock();
             NodeLinkedList* aux = ConvertTreeToList(root);
@@ -196,25 +210,25 @@ int main()
             iInput = -3;
         }
 
-        else if(iInput == 13)
+        else if(iInput == 14)
         {
             BubbleSortRepresentation(root);
             iInput = -3;
         }
 
-        else if(iInput == 14)
+        else if(iInput == 15)
         {
             insertionSortRepresentation(root);
             iInput = -3;
         }
 
-        else if(iInput == 15)
+        else if(iInput == 16)
         {
             selectionSortRepresentation(root);
             iInput = -3;
         }
 
-        else if(iInput == 16)
+        else if(iInput == 17)
         {
             ShellSortRepresentation(root);
             iInput = -3;
