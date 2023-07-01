@@ -110,6 +110,7 @@ void PrintLinkedList(NodeLinkedList* head)
         current = current->ptrNext;
     }
     cout << endl;
+    cout << endl;
 }
 
 /**
@@ -139,6 +140,19 @@ void displaySort(NodeLinkedList* head)
         std::cout << std::string(current->iPayload, '*') << std::endl;
         current = current->ptrNext;
     }
+}
+
+void displaySortShell(NodeLinkedList* head) 
+{
+    NodeLinkedList* current = head;
+    while (current != nullptr) {
+        for (int i = 0; i < current->iPayload; i++) {
+            std::cout << "*";
+        }
+        std::cout << " ";
+        current = current->ptrNext;
+    }
+    std::cout << std::endl;
 }
 
 /**

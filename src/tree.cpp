@@ -427,9 +427,11 @@ void BubbleSortRepresentation(Node* root)
                 NodeLinkedList* aux2 = current -> ptrNext -> ptrNext; // guarda o 4
                 current -> ptrNext -> ptrNext = aux; // 2 -> 3
                 aux -> ptrNext = aux2;
+                system("cls");
                 system("cls");  // Limpa a tela do console (funciona no Windows)
+                cout <<"Bubble Sort: " << endl;
                 displaySort(novoHead->ptrNext);
-                //this_thread::sleep_for(std::chrono::milliseconds(500));  // Atraso em milissegundos
+                this_thread::sleep_for(chrono::milliseconds(500));  // Atraso em milissegundos
             }
         current = current -> ptrNext;
         }
@@ -467,13 +469,15 @@ void insertionSortRepresentation(Node* root)
 
         current = nextNode;
 
-        std::system("cls");  // Limpa a tela do console (funciona no Windows)
+        system("cls");
+        system("cls");  // Limpa a tela do console (funciona no Windows)
+        cout << "Insertion Sort: " << endl;
         cout << "Antiga Lista: " << endl;
         displaySort(current);
         cout << endl;
         cout << "Lista organizada: " << endl;
         displaySort(sorted);
-        //std::this_thread::sleep_for(std::chrono::milliseconds(500));  // Atraso em milissegundos
+        this_thread::sleep_for(chrono::milliseconds(500));  // Atraso em milissegundos
     }
 
     head = sorted;
@@ -498,8 +502,56 @@ void selectionSortRepresentation(Node* root)
         }
         swapNodes(head, temp->iPayload, min->iPayload); //Chamo a troca de nós entre o nó que estou e o mínimo encontrado
         temp = min->ptrNext; //Redireciono o nó que vou olhar
+        system("cls");
         system("cls");  // Limpa a tela do console (funciona no Windows)
+        cout << "Selection Sort: " << endl;
         displaySort(*head);
-        //this_thread::sleep_for(std::chrono::milliseconds(500));  // Atraso em milissegundos
+        this_thread::sleep_for(chrono::milliseconds(500));  // Atraso em milissegundos
     }
+}
+
+void ShellSortRepresentation(Node* root) 
+{
+    NodeLinkedList* aux = ConvertTreeToList(root);
+    NodeLinkedList** head = &aux;
+    
+    int iLen = 0;
+    NodeLinkedList* current = *head;
+    while (current != nullptr) {
+        iLen++;
+        current = current->ptrNext;
+    }
+    iLen++; // +1 pois estamos acrescentando um nó no início
+
+    NodeLinkedList* novoHead = new NodeLinkedList();
+    novoHead->ptrNext = *head;
+
+    for (int gap = iLen / 2; gap > 0; gap /= 2) {
+        for (int i = gap; i < iLen; i++) {
+            NodeLinkedList* current = novoHead;
+            for (int j = 0; j < i; j++) {
+                current = current->ptrNext;
+            }
+            NodeLinkedList* temp = current->ptrNext;
+            while (temp != nullptr && temp->ptrNext != nullptr && temp->iPayload > temp->ptrNext->iPayload) {
+                NodeLinkedList* aux = temp->ptrNext;
+                temp->ptrNext = aux->ptrNext;
+                aux->ptrNext = temp;
+                current->ptrNext = aux;
+
+                system("cls");
+                system("cls");  // Limpa a tela do console (funciona no Windows)
+                cout << "Shell Sort: " << endl;
+                displaySort(novoHead->ptrNext);
+                cout << endl;
+                std::this_thread::sleep_for(std::chrono::milliseconds(500));  // Atraso em milissegundos
+
+                temp = current->ptrNext;
+                current = current->ptrNext;
+            }
+        }
+    }
+
+    *head = novoHead->ptrNext;
+    delete novoHead;
 }

@@ -40,5 +40,6 @@ void shellSort(NodeLinkedList** head);
 void BubbleSortRepresentation(Node* root);
 void insertionSortRepresentation(Node* root);
 void selectionSortRepresentation(Node* root);
+void ShellSortRepresentation(Node* root);
 
 #endif 

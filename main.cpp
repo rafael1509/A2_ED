@@ -136,6 +136,11 @@ int main()
             selectionSortRepresentation(root);
         }
 
+        else if(iInput == 16)
+        {
+            ShellSortRepresentation(root);
+        }
+
         clock_t end = clock();
         double elapsed_secs = double(end - start) / CLOCKS_PER_SEC;
         cout << "Tempo de processamento: " << elapsed_secs << " segundos" << endl;

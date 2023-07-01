@@ -10,6 +10,7 @@ int lenght(NodeLinkedList* head);
 void PrintLinkedList(NodeLinkedList* head);
 void insertAtBeginning(NodeLinkedList*& head, int data);
 void displaySort(NodeLinkedList* head);
+void displaySortShell(NodeLinkedList* head);
 void swapNodes(struct NodeLinkedList** head, int x, int y);
 
 #endif 
