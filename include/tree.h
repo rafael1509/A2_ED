@@ -39,5 +39,6 @@ void selectionSort(Node* root);
 void shellSort(Node* root);
 void BubbleSortRepresentation(Node* root);
 void insertionSortRepresentation(Node* root);
+void selectionSortRepresentation(Node* root);
 
 #endif 

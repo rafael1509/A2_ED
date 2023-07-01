@@ -434,7 +434,7 @@ void BubbleSortRepresentation(Node* root)
                 aux -> ptrNext = aux2;
                 system("cls");  // Limpa a tela do console (funciona no Windows)
                 displaySort(novoHead->ptrNext);
-                this_thread::sleep_for(std::chrono::milliseconds(100));  // Atraso em milissegundos
+                this_thread::sleep_for(std::chrono::milliseconds(500));  // Atraso em milissegundos
             }
         current = current -> ptrNext;
         }
@@ -472,12 +472,39 @@ void insertionSortRepresentation(Node* root)
 
         current = nextNode;
 
-        std::system("clear");  // Limpa a tela do console (funciona no Windows)
+        std::system("cls");  // Limpa a tela do console (funciona no Windows)
+        cout << "Antiga Lista: " << endl;
         displaySort(current);
         cout << endl;
+        cout << "Lista organizada: " << endl;
         displaySort(sorted);
-        std::this_thread::sleep_for(std::chrono::milliseconds(1000));  // Atraso em milissegundos
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));  // Atraso em milissegundos
     }
 
     head = sorted;
+}
+
+void selectionSortRepresentation(Node* root)
+{
+    NodeLinkedList* aux = ConvertTreeToList(root);
+    NodeLinkedList** head = &aux;
+
+    struct NodeLinkedList* temp = *head;
+  
+    while (temp != nullptr) //Passo por todos os nós da lista
+    {
+        struct NodeLinkedList* min = temp;
+        struct NodeLinkedList* r = temp -> ptrNext;
+        
+        while (r != nullptr) //Verifico qual o mínimo a partir do nó que estou olhando
+        {
+            if (min -> iPayload > r -> iPayload) min = r;
+            r = r -> ptrNext;
+        }
+        swapNodes(head, temp->iPayload, min->iPayload); //Chamo a troca de nós entre o nó que estou e o mínimo encontrado
+        temp = min->ptrNext; //Redireciono o nó que vou olhar
+        system("cls");  // Limpa a tela do console (funciona no Windows)
+        displaySort(*head);
+        this_thread::sleep_for(std::chrono::milliseconds(500));  // Atraso em milissegundos
+    }
 }
