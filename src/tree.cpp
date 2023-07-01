@@ -285,9 +285,9 @@ void BubbleSort(Node* root)
 }
 
 /**
- * Ordena uma árvore convertida para lista encadeada usando o algoritmo Insertion Sort.
+ * Ordena uma lista encadeada usando o algoritmo Insertion Sort.
  *
- * @param root Ponteiro para a root da árvore.
+ * @param head Ponteiro para o primeiro item da lista que é o root da árvore.
  */
 void insertionSort(NodeLinkedList** head)
 {
@@ -322,14 +322,12 @@ void insertionSort(NodeLinkedList** head)
     }
 
     *head = sorted; //atualiza a head lista original como a head da sorted list
-    cout << "A árvore foi convertida em lista encadeada e organizada com Selection sort: \n";
-    PrintLinkedList((*head));
 }
 
 /**
- * Ordena uma lista encadeada usando o algoritmo Selection Sort.
+ * Ordena uma lista encadeada usando o algoritmo Insertion Sort.
  *
- * @param root Ponteiro para a root da árvore.
+ * @param head Ponteiro para o primeiro item da lista que é o root da árvore.
  */
 void selectionSort(Node* root)
 {
@@ -360,11 +358,8 @@ void selectionSort(Node* root)
  *
  * @param root Ponteiro para a root da árvore.
  */
-void shellSort(Node* root) 
+void shellSort(NodeLinkedList** head) 
 {
-    NodeLinkedList* aux = ConvertTreeToList(root);
-    NodeLinkedList** head = &aux;
-
     int size = lenght(*head);
     int gap = size / 2;
 
@@ -434,7 +429,7 @@ void BubbleSortRepresentation(Node* root)
                 aux -> ptrNext = aux2;
                 system("cls");  // Limpa a tela do console (funciona no Windows)
                 displaySort(novoHead->ptrNext);
-                this_thread::sleep_for(std::chrono::milliseconds(500));  // Atraso em milissegundos
+                //this_thread::sleep_for(std::chrono::milliseconds(500));  // Atraso em milissegundos
             }
         current = current -> ptrNext;
         }
@@ -478,7 +473,7 @@ void insertionSortRepresentation(Node* root)
         cout << endl;
         cout << "Lista organizada: " << endl;
         displaySort(sorted);
-        std::this_thread::sleep_for(std::chrono::milliseconds(500));  // Atraso em milissegundos
+        //std::this_thread::sleep_for(std::chrono::milliseconds(500));  // Atraso em milissegundos
     }
 
     head = sorted;
@@ -505,6 +500,6 @@ void selectionSortRepresentation(Node* root)
         temp = min->ptrNext; //Redireciono o nó que vou olhar
         system("cls");  // Limpa a tela do console (funciona no Windows)
         displaySort(*head);
-        this_thread::sleep_for(std::chrono::milliseconds(500));  // Atraso em milissegundos
+        //this_thread::sleep_for(std::chrono::milliseconds(500));  // Atraso em milissegundos
     }
 }

@@ -105,6 +105,8 @@ int main()
             NodeLinkedList* aux = ConvertTreeToList(root);
             NodeLinkedList** head = &aux;
             insertionSort(head);
+            cout << "A árvore foi convertida em lista encadeada e organizada com Insertion sort: \n";
+            PrintLinkedList((*head));
         }
 
         else if(iInput == 11)
@@ -114,7 +116,9 @@ int main()
 
         else if(iInput == 12)
         {
-            shellSort(root);
+            NodeLinkedList* aux = ConvertTreeToList(root);
+            NodeLinkedList** head = &aux;
+            shellSort(head);
         }
 
         else if(iInput == 13)
